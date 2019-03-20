@@ -177,7 +177,7 @@ namespace Dynamics365.Monitoring.Plugins {
             using (var client = new HttpClient()) {
             
                 Uri requestUri = new Uri("https://dc.services.visualstudio.com/v2/track");
-                PostBody postBody = new PostBody(_instrumentationKey);
+                PostBody postBody = new PostBody();
                 MemoryStream stream1 = new MemoryStream();
                 DataContractJsonSerializer ser = new DataContractJsonSerializer(typeof(PostBody), new DataContractJsonSerializerSettings() {
                     UseSimpleDictionaryFormat = true
@@ -269,10 +269,10 @@ namespace Dynamics365.Monitoring.Plugins {
             public DataModel data;
 
 
-            public PostBody(string instrumentationKey) {
+            public PostBody() {
                 //Default initialization as an sample
                 name = "Microsoft.ApplicationInsights.Dev.7b18b7f7-3daf-4951-abba-8372cf9b21a9.Event";
-                iKey = instrumentationKey;
+                iKey = "";
                 time = DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss");
 
                 data = new DataModel {

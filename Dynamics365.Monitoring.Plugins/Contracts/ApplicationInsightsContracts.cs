@@ -53,10 +53,10 @@ namespace Dynamics365.Monitoring.Plugins.Contracts {
         public DataModel data;
 
 
-        public PostBody(string instrumentationKey) {
+        public PostBody() {
             //Default initialization as an sample
             name = "Microsoft.ApplicationInsights.Dev.7b18b7f7-3daf-4951-abba-8372cf9b21a9.Event";
-            iKey = instrumentationKey;
+            iKey = "";
             time = DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss");
 
             data = new DataModel {

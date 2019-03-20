@@ -70,7 +70,8 @@ namespace Dynamics365.Monitoring.Plugins
             using (var client = new HttpClient()) {
 
                 Uri requestUri = new Uri("https://dc.services.visualstudio.com/v2/track");
-                PostBody postBody = new PostBody(_instrumentationKey);
+                PostBody postBody = new PostBody();
+                postBody.iKey = _instrumentationKey;
                 MemoryStream stream1 = new MemoryStream();
                 DataContractJsonSerializer ser = new DataContractJsonSerializer(typeof(PostBody), new DataContractJsonSerializerSettings() {
                     UseSimpleDictionaryFormat = true
