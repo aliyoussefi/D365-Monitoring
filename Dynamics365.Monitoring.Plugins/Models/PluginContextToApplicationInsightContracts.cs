@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Dynamics365.Monitoring.Plugins.Models {
+
     public static class Metrics {
         public static BaseData CreateCustomMetricData(BaseData data, IPluginExecutionContext context) {
             data.metrics = new List<MetricDetails>();

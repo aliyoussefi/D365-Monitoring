@@ -62,10 +62,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationInsightsPostCreate.cs" />
+    <Compile Include="ApplicationInsightsTrackCustomEvent.cs" />
+    <Compile Include="ApplicationInsightsTrackException.cs" />
     <Compile Include="ApplicationInsightsTrackMetric.cs" />
     <Compile Include="Contracts\ApplicationInsightsContracts.cs" />
     <Compile Include="Models\PluginContextToApplicationInsightContracts.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PushMessageToApplicationInsights.cs" />
     <Compile Include="SleepyPlugin.cs" />
   </ItemGroup>
   <ItemGroup>
