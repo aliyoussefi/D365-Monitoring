@@ -214,7 +214,7 @@ function successCallBackCustomEventPush(result) {
 
 
     };
-    appInsights.trackEvent("Gilles Demo", dimensions, null);
+    appInsights.trackEvent("UCI Demo", dimensions, null);
 }
 
 function successCallBackAppPropertiesCustomEventPush(result) {
@@ -228,12 +228,12 @@ function successCallBackAppPropertiesCustomEventPush(result) {
 
 
     };
-    appInsights.trackEvent("Gilles Demo", dimensions, null);
+    appInsights.trackEvent("UCI Demo", dimensions, null);
 }
 
 function errorCallBackCustomEventPush(result) {
     var dimensions = { [""]: "" };
-    appInsights.trackEvent("Gilles Demo", dimensions, null);
+    appInsights.trackEvent("UCI Demo", dimensions, null);
 }
 //Form and Execution Context Helper Methods========================================================================================
 
