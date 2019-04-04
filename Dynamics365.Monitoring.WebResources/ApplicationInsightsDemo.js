@@ -126,13 +126,18 @@ function testApplicationInsights(formContext) {
              ["clientState"]: clientContext.getClientState(),
              ["formFactor"]: clientContext.getFormFactor(),
              ["isOffline"]: clientContext.isOffline(),
-             ["clientUrl"]: globalContext.getClientUrl(),
+            ["clientUrl"]: globalContext.getClientUrl(),
+            ["currentAppUrl"]: globalContext.getCurrentAppUrl(),
              ["version"]: globalContext.getVersion(),
              ["baseCurrencyId"]: organizationSettings.baseCurrencyId,
              ["defaultCountryCode"]: organizationSettings.defaultCountryCode,
              ["isAutoSaveEnabled"]: organizationSettings.isAutoSaveEnabled,
              ["languageId"]: organizationSettings.languageId
-            };
+        };
+
+        globalContext.getCurrentAppName().then(successCallBackCustomEventPush, errorCallBackCustomEventPush);
+        globalContext.getCurrentAppProperties().then(successCallBackAppPropertiesCustomEventPush, errorCallBackCustomEventPush);
+
             appInsights.trackTrace("End " + "formContext variable");
             //XRM Variables******************************************************
         //END DEMO: trackTrace
@@ -178,6 +183,7 @@ function testApplicationInsights(formContext) {
                 ["NavigationType"]: navigationType
             };
         appInsights.trackPageView(name, window.location.href, dimensions, measurements, pageReady - navigationStart);
+        
             appInsights.trackTrace("End DEMO: " + "pageViews");
         //END DEMO: pageViews===============================================
 
@@ -201,6 +207,35 @@ function testApplicationInsights(formContext) {
 
 }
 
+//Form and Execution Context Helper Methods========================================================================================
+function successCallBackCustomEventPush(result) {
+    var dimensions = {
+        ["name"]: result
+
+
+    };
+    appInsights.trackEvent("Gilles Demo", dimensions, null);
+}
+
+function successCallBackAppPropertiesCustomEventPush(result) {
+    var dimensions = {
+        ["appId"]: result.appId,
+        ["displayName"]: result.displayName,
+        ["uniqueName"]: result.uniqueName,
+        ["url"]: result.url,
+        ["webResourceId"]: result.webResourceId,
+        ["webResourceName"]: result.webResourceName
+
+
+    };
+    appInsights.trackEvent("Gilles Demo", dimensions, null);
+}
+
+function errorCallBackCustomEventPush(result) {
+    var dimensions = { [""]: "" };
+    appInsights.trackEvent("Gilles Demo", dimensions, null);
+}
+//Form and Execution Context Helper Methods========================================================================================
 
 //Application Insights Demo Helper Methods==========================================================================================
 function captureTelemetry(formContext) {
