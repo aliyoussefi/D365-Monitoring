@@ -30,4 +30,13 @@ cm,
 client_Type,
 client_OS,
 client_StateOrProvince ,
-client_Browser 
+client_Browser
+//=========================================================================================
+//Parsing RemoteExecutionContext
+customEvents  
+| extend context = parse_json(customDimensions) 
+| extend rmc = parse_json(context) 
+| order by timestamp  desc
+| project context.RemoteExecutionContext, rmc.BusinessUnitId
+//=========================================================================================
+//Parsing RemoteExecutionContext

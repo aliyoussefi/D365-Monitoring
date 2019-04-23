@@ -11,7 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dynamics365.Monitoring.Plug
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "KustoQueries", "KustoQueries", "{EA7C1D11-EDCC-4FF8-AC97-E7A34BF2F3EC}"
 	ProjectSection(SolutionItems) = preProject
-		CustomEvents.txt = CustomEvents.txt
+		KustoQueries.CustomEvents.txt = KustoQueries.CustomEvents.txt
+		KustoQueries.CustomMetrics.txt = KustoQueries.CustomMetrics.txt
+		KustoQueries.Exceptions.txt = KustoQueries.Exceptions.txt
+		KustoQueries.PageViews.txt = KustoQueries.PageViews.txt
 	EndProjectSection
 EndProject
 Global
