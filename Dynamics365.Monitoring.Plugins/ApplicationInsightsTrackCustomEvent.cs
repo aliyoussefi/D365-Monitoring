@@ -50,20 +50,24 @@ namespace Dynamics365.Monitoring.Plugins
             IPluginExecutionContext context = (IPluginExecutionContext)
                 serviceProvider.GetService(typeof(IPluginExecutionContext));
             XmlDocument doc = new XmlDocument();
+            DateTime executionTime = DateTime.Now.ToUniversalTime();
             tracingService.Trace("Parse and Search Unsecure Config at " + DateTime.Now.ToString());
             doc.LoadXml(_unsecureString);
             _instrumentationKey = GetValueNode(doc, "instrumentationKey");
+            PostBody postBody = new PostBody();
+            postBody.iKey = _instrumentationKey;
             try {
-                PostBody postBody = new PostBody();
-                postBody.iKey = _instrumentationKey;
                 tracingService.Trace("Create Custom Event Data DTO at " + DateTime.Now.ToString());
                 postBody.data.baseData = Events.CreateCustomEventData(postBody.data.baseData, context);
+                postBody.data.baseData.properties.Add("ExecutionTime", executionTime.ToString());
                 tracingService.Trace("Send Custom Event Request at " + DateTime.Now.ToString());
                 PushMessageToApplicationInsights messenger = new PushMessageToApplicationInsights();
                 messenger.SendRequest(postBody, tracingService);
             }
-            catch (Exception ex) {
-                
+            catch (InvalidPluginExecutionException ex) {
+                postBody.data.baseData = Exceptions.CreateExceptionEventData(postBody.data.baseData, ex, context);
+                PushMessageToApplicationInsights messenger = new PushMessageToApplicationInsights();
+                messenger.SendRequest(postBody, tracingService);
                 throw new InvalidPluginExecutionException(ex.Message);
             }
 

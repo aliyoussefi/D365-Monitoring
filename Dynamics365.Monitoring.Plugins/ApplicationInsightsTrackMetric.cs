@@ -55,7 +55,6 @@ namespace Dynamics365.Monitoring.Plugins
             try {
                 //SendMetric
                 SendRequest(BaseType.MetricData, context, tracingService);
-
             }
             catch (Exception ex) {
 
