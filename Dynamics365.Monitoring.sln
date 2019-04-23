@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dynamics365.Monitoring.WebR
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dynamics365.Monitoring.Plugins.UnitTests", "Dynamics365.Monitoring.Plugins.UnitTests\Dynamics365.Monitoring.Plugins.UnitTests.csproj", "{787D5C5B-432B-4BC5-B860-9562DF7FE9B0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dynamics365.Monitoring.Plugins", "Dynamics365.Monitoring.Plugins\Dynamics365.Monitoring.Plugins.csproj", "{DF9F0213-6C0F-41C3-9C35-5078301EDFD0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dynamics365.Monitoring.Plugins.LogAnalytics", "Dynamics365.Monitoring.Plugins\Dynamics365.Monitoring.Plugins.LogAnalytics.csproj", "{DF9F0213-6C0F-41C3-9C35-5078301EDFD0}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "KustoQueries", "KustoQueries", "{EA7C1D11-EDCC-4FF8-AC97-E7A34BF2F3EC}"
 	ProjectSection(SolutionItems) = preProject

@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Dynamics365.Monitoring.Plugins</RootNamespace>
-    <AssemblyName>Dynamics365.Monitoring.Plugins</AssemblyName>
+    <AssemblyName>Dynamics365.Monitoring.Plugins.LogAnalytics</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
