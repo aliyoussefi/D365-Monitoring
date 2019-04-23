@@ -1,0 +1,33 @@
+//General example showing extension of serialzied customDimensions and customMeasurements
+customEvents 
+| where name == "sample"
+| extend cd = parse_json(customDimensions) 
+| extend cm = parse_json(customMeasurements) 
+| order by timestamp desc
+//=========================================================================================
+//Parsing and Converting
+customEvents 
+| extend cd=parse_json(customDimensions)
+| extend cm=parse_json(customMeasurements)
+| project timestamp , 
+cd.client, 
+name,
+cd.userName, 
+toint(cm.DomContentLoadTime), 
+toint(cm.RequestResponseTime), 
+toint(cm.PageRenderTime), 
+toint(cm.NetworkLatency), 
+toint(cm.RedirectCount)  
+//=========================================================================================
+//Focusing on Web Resource / Client Events showing client information
+customEvents 
+| extend cd=parse_json(customDimensions)
+| extend cm=parse_json(customMeasurements)
+| project timestamp , 
+name,
+cd,
+cm,
+client_Type,
+client_OS,
+client_StateOrProvince ,
+client_Browser 

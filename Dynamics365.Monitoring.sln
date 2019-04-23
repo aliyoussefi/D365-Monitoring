@@ -1,13 +1,18 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.489
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28729.10
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dynamics365.Monitoring.WebResources", "Dynamics365.Monitoring.WebResources\Dynamics365.Monitoring.WebResources.csproj", "{5719205E-BAD4-46B1-9890-CC986E4B10B3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dynamics365.Monitoring.Plugins.UnitTests", "Dynamics365.Monitoring.Plugins.UnitTests\Dynamics365.Monitoring.Plugins.UnitTests.csproj", "{787D5C5B-432B-4BC5-B860-9562DF7FE9B0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dynamics365.Monitoring.Plugins", "Dynamics365.Monitoring.Plugins\Dynamics365.Monitoring.Plugins.csproj", "{DF9F0213-6C0F-41C3-9C35-5078301EDFD0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "KustoQueries", "KustoQueries", "{EA7C1D11-EDCC-4FF8-AC97-E7A34BF2F3EC}"
+	ProjectSection(SolutionItems) = preProject
+		CustomEvents.txt = CustomEvents.txt
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
