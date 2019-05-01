@@ -1,0 +1,22 @@
+   at Microsoft.Crm.Extensibility.OrganizationSdkServiceInternal.CreateInternal(Entity entity, InvocationContext invocationContext, CallerOriginToken callerOriginToken, WebServiceType serviceType, Boolean checkAdminMode, Dictionary`2 optionalParameters)
+   at Microsoft.Crm.Extensibility.OData.CrmODataExecutionContext.CreateOrganizationResponse(Entity entity)
+   at Microsoft.Crm.Extensibility.OData.CrmODataServiceDataProvider.CreateEdmEntity(CrmODataExecutionContext context, String edmEntityName, EdmEntityObject entityObject, Boolean isUpsert)
+   at Microsoft.Crm.Extensibility.OData.EntityController.PostEntitySetImplementation(String& entitySetName, EdmEntityObject entityObject)
+   at Microsoft.PowerApps.CoreFramework.ActivityLoggerExtensions.Execute[TResult](ILogger logger, EventId eventId, ActivityType activityType, Func`1 func, IEnumerable`1 additionalCustomProperties)
+   at Microsoft.Xrm.Telemetry.XrmTelemetryExtensions.Execute[TResult](ILogger logger, XrmTelemetryActivityType activityType, Func`1 func)
+   at lambda_method(Closure , Object , Object[] )
+   at System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ActionExecutor.<>c__DisplayClass10.<GetExecutor>b__9(Object instance, Object[] methodParameters)
+   at System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ExecuteAsync(HttpControllerContext controllerContext, IDictionary`2 arguments, CancellationToken cancellationToken)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ApiControllerActionInvoker.<InvokeActionAsyncCore>d__0.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Controllers.ActionFilterResult.<ExecuteAsync>d__2.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw()
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Web.Http.Dispatcher.HttpControllerDispatcher.<SendAsync>d__1.MoveNext()
+Activity Id: 38644297-b58b-462f-812c-5a58565feff0
