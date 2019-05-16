@@ -62,6 +62,7 @@ namespace Dynamics365.Monitoring.Plugins
                     postBody.data.baseData = Exceptions.CreateExceptionEventData(postBody.data.baseData, e, context);
                     PushMessageToApplicationInsights messenger = new PushMessageToApplicationInsights();
                     messenger.SendRequest(postBody, tracingService);
+                    throw e;
                 }
 
             }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Dynamics365.Monitoring.Plugins;
 using FakeXrmEasy;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.Xrm.Sdk;
@@ -7,6 +8,17 @@ using Microsoft.Xrm.Sdk;
 namespace Dynamics.Ready.Plugins.UnitTests {
     [TestClass]
     public class UnitTest1 {
+        public XrmFakedContext BuildPostOpCreateContext(Guid? correlationId)
+        {
+            var fakedContext = new XrmFakedContext();
+            var wfContext = fakedContext.GetDefaultPluginContext();
+            wfContext.MessageName = "Create";
+            wfContext.Stage = 40;
+            wfContext.CorrelationId = correlationId ?? new Guid();
+
+            return fakedContext;
+        }
+
         [TestMethod]
         public void TestApplicationInsightsPostCreate() {
             var fakedContext = new XrmFakedContext();
@@ -22,9 +34,6 @@ namespace Dynamics.Ready.Plugins.UnitTests {
 
             wfContext.InputParameters = new ParameterCollection();
             wfContext.InputParameters.Add(new KeyValuePair<string, object>("Target", accountEntity));
-
-
-
 
             var result = fakedContext.ExecutePluginWith<ApplicationInsightsPostCreate>(wfContext);
 
