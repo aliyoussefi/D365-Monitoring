@@ -17,7 +17,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "KustoQueries", "KustoQuerie
 		KustoQueries.PageViews.txt = KustoQueries.PageViews.txt
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dynamics365.Monitoring.AzureFunctions", "Dynamics365.Monitoring.AzureFunctions\Dynamics365.Monitoring.AzureFunctions.csproj", "{89BE2D50-1BE0-47BB-8D5F-EE53B7C74E33}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dynamics365.Monitoring.AzureFunctions", "Dynamics365.Monitoring.AzureFunctions\Dynamics365.Monitoring.AzureFunctions.csproj", "{89BE2D50-1BE0-47BB-8D5F-EE53B7C74E33}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
