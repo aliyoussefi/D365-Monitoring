@@ -3,6 +3,7 @@ using Dynamics365.Monitoring.Plugins.Models;
 using Microsoft.Xrm.Sdk;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
@@ -39,6 +40,8 @@ namespace Dynamics365.Monitoring.Plugins
         }
         #endregion
         public void Execute(IServiceProvider serviceProvider) {
+            Stopwatch timer = new Stopwatch();
+            timer.Start();
             //https://msdn.microsoft.com/en-us/library/gg509027.aspx
             //When you use the Update method or UpdateRequest message, do not set the OwnerId attribute on a record unless the owner has actually changed.
             //When you set this attribute, the changes often cascade to related entities, which increases the time that is required for the update operation.
@@ -54,6 +57,7 @@ namespace Dynamics365.Monitoring.Plugins
             tracingService.Trace("Parse and Search Unsecure Config at " + DateTime.Now.ToString());
             doc.LoadXml(_unsecureString);
             _instrumentationKey = GetValueNode(doc, "instrumentationKey");
+            PushMessageToApplicationInsights messenger = new PushMessageToApplicationInsights();
             PostBody postBody = new PostBody();
             postBody.iKey = _instrumentationKey;
             try {
@@ -61,16 +65,20 @@ namespace Dynamics365.Monitoring.Plugins
                 postBody.data.baseData = Events.CreateCustomEventData(postBody.data.baseData, context);
                 postBody.data.baseData.properties.Add("ExecutionTime", executionTime.ToString());
                 tracingService.Trace("Send Custom Event Request at " + DateTime.Now.ToString());
-                PushMessageToApplicationInsights messenger = new PushMessageToApplicationInsights();
                 messenger.SendRequest(postBody, tracingService);
             }
             catch (InvalidPluginExecutionException ex) {
                 postBody.data.baseData = Exceptions.CreateExceptionEventData(postBody.data.baseData, ex, context);
-                PushMessageToApplicationInsights messenger = new PushMessageToApplicationInsights();
                 messenger.SendRequest(postBody, tracingService);
                 throw new InvalidPluginExecutionException(ex.Message);
             }
-
+            //timer.Stop();
+            tracingService.Trace("Set expected duration " + timer.ElapsedMilliseconds.ToString());
+            postBody.data.baseData.properties.Add("ExecutionDuration", timer.ElapsedMilliseconds.ToString());
+            postBody.data.baseData.properties.Remove("ExecutionDuration");
+            messenger.SendRequest(postBody, tracingService);
+            messenger.SendRequestAsync(postBody, tracingService, timer);
+            tracingService.Trace("Leaving plugin execute " + timer.ElapsedMilliseconds.ToString());
         }
 
     }
