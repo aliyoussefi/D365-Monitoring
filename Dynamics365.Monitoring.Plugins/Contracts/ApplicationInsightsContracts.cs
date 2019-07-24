@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 namespace Dynamics365.Monitoring.Plugins.Contracts {
     #region Contracts
+
+    #region Exceptions
     public class ExceptionsData {
         List<ExceptionDetails> exceptions;
     }
@@ -27,6 +29,9 @@ namespace Dynamics365.Monitoring.Plugins.Contracts {
         public int line;
 
     }
+    #endregion
+   
+    #region base
     public class BaseData {
 
         public string name;
@@ -46,6 +51,7 @@ namespace Dynamics365.Monitoring.Plugins.Contracts {
     public enum BaseType {
         EventData, ExceptionData, TraceData, DependencyData, MetricData
     }
+    #endregion
     public class PostBody {
         public string name;
         public string time;
@@ -55,7 +61,7 @@ namespace Dynamics365.Monitoring.Plugins.Contracts {
 
         public PostBody() {
             //Default initialization as an sample
-            name = "Microsoft.ApplicationInsights.Dev.7b18b7f7-3daf-4951-abba-8372cf9b21a9.Event";
+            name = "Microsoft.ApplicationInsights.Dev.applicationInsightsKey.Event";
             iKey = "";
             time = DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss");
 

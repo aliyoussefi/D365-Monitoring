@@ -31,7 +31,6 @@ namespace Dynamics365.Monitoring.Plugins
 
         private string GetValueNode(XmlDocument doc, string key) {
             XmlNode node = doc.SelectSingleNode(String.Format("Settings/setting[@name='{0}']", key));
-
             if (node != null) {
                 return node.SelectSingleNode("value").InnerText;
             }
@@ -51,57 +50,31 @@ namespace Dynamics365.Monitoring.Plugins
                 serviceProvider.GetService(typeof(IPluginExecutionContext));
             XmlDocument doc = new XmlDocument();
             doc.LoadXml(_unsecureString);
+            tracingService.Trace("Loaded Unsecure Configuration XML " + DateTime.Now.ToString());
             _instrumentationKey = GetValueNode(doc, "instrumentationKey");
             try {
                 PostBody postBody = new PostBody();
                 postBody.iKey = _instrumentationKey;
+                tracingService.Trace("Created PostBody with iKey = " + postBody.iKey + " " + DateTime.Now.ToString());
                 try {
                     throw new InvalidPluginExecutionException("Test Exception");
                 }
                 catch (InvalidPluginExecutionException e) {
                     postBody.data.baseData = Exceptions.CreateExceptionEventData(postBody.data.baseData, e, context);
+                    tracingService.Trace("Set baseData for Exception Request " + DateTime.Now.ToString());
                     PushMessageToApplicationInsights messenger = new PushMessageToApplicationInsights();
                     messenger.SendRequest(postBody, tracingService);
+                    tracingService.Trace("Sent Request " + DateTime.Now.ToString());
                     throw e;
                 }
 
             }
             catch (Exception ex) {
-
+                tracingService.Trace("Caught final exception " + DateTime.Now.ToString());
                 throw new InvalidPluginExecutionException(ex.Message);
             }
 
         }
-
-
-
-        //public void SendRequest(BaseType messageType, IPluginExecutionContext context, ITracingService tracingService) {
-
-        //    PostBody postBody = new PostBody();
-        //    postBody.iKey = _instrumentationKey;
-
-        //    postBody.data.baseType = messageType.ToString();
-        //    switch (postBody.data.baseType) {
-        //        case "EventData":
-        //            postBody.data.baseData = Events.CreateCustomEventData(postBody.data.baseData, context);
-        //            break;
-        //        case "ExceptionData":
-        //            try {
-        //                throw new InvalidPluginExecutionException("Test Exception");
-        //            }
-        //            catch (InvalidPluginExecutionException e) {
-        //                postBody.data.baseData = Exceptions.CreateExceptionEventData(postBody.data.baseData, e, context);
-        //            }
-        //            break;
-        //        case "MetricData":
-        //                postBody.data.baseData = Metrics.CreateCustomMetricData(postBody.data.baseData, context);
-        //            break;
-        //    }
-
-        //    PushMessageToApplicationInsights messenger = new PushMessageToApplicationInsights();
-        //    messenger.SendRequest(postBody, tracingService);
-
-        //}
 
     }
 }

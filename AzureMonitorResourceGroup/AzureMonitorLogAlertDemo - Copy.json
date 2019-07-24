@@ -1,0 +1,52 @@
+﻿{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "id": "/subscriptions/527e910a-287d-42a6-af7d-995051d65bef/resourceGroups/Dynamics365andAzure/providers/microsoft.insights/activityLogAlerts/test",
+  "type": "Microsoft.Insights/ActivityLogAlerts",
+  "name": "test",
+  "location": "Global",
+  "kind": null,
+  "tags": {},
+  "properties": {
+    "scopes": [
+      "/subscriptions/527e910a-287d-42a6-af7d-995051d65bef"
+    ],
+    "condition": {
+      "allOf": [
+        {
+          "field": "category",
+          "equals": "ServiceHealth",
+          "containsAny": null,
+          "odata.type": null
+        },
+        {
+          "field": "properties.impactedServices[*].ImpactedRegions[*].RegionName",
+          "equals": null,
+          "containsAny": [
+            "Australia Southeast",
+            "Central US",
+            "East US",
+            "East US 2",
+            "Global",
+            "South Central US",
+            "West Central US",
+            "West US"
+          ],
+          "odata.type": null
+        }
+      ],
+      "odata.type": null
+    },
+    "actions": {
+      "actionGroups": [
+        {
+          "actionGroupId": "/subscriptions/527e910a-287d-42a6-af7d-995051d65bef/resourcegroups/dynamics365andazure/providers/microsoft.insights/actiongroups/email%20ali.youssefi@microsoft.com",
+          "webhookProperties": {}
+        }
+      ]
+    },
+    "enabled": false,
+    "description": "test"
+  },
+  "identity": null
+}
