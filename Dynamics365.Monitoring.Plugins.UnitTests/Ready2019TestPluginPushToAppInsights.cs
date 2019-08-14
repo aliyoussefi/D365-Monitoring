@@ -21,7 +21,7 @@ namespace Dynamics.Ready.Plugins.UnitTests {
 
         [TestMethod]
         public void TestApplicationInsightsPostCreate() {
-            string unsecureConfig = null;
+            string unsecureConfig = @"<Settings><setting name=""instrumentationKey""><value>MyApplicationInsightsKey</value></setting></Settings>";
             string secureConfig = null;
             var fakedContext = new XrmFakedContext();
             var wfContext = fakedContext.GetDefaultPluginContext();
@@ -37,7 +37,7 @@ namespace Dynamics.Ready.Plugins.UnitTests {
             wfContext.InputParameters = new ParameterCollection();
             wfContext.InputParameters.Add(new KeyValuePair<string, object>("Target", accountEntity));
 
-            var result = fakedContext.ExecutePluginWithConfigurations<ApplicationInsightsPostCreate>(wfContext, unsecureConfig, secureConfig);
+            var result = fakedContext.ExecutePluginWithConfigurations<ApplicationInsightsTrackException>(wfContext, unsecureConfig, secureConfig);
 
         }
     }

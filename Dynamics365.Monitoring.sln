@@ -22,6 +22,9 @@ EndProject
 Project("{151D2E53-A2C4-4D7D-83FE-D05416EBD58E}") = "AzureMonitorResourceGroup", "AzureMonitorResourceGroup\AzureMonitorResourceGroup.deployproj", "{08B5C21D-8C87-439C-BD18-0EBC5D4A8BC7}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NewFolder1", "NewFolder1", "{3DB43E61-69E6-4661-83AA-014099639090}"
+	ProjectSection(SolutionItems) = preProject
+		DevOps.Build.StorageQueue.FailedBuildExample.json = DevOps.Build.StorageQueue.FailedBuildExample.json
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wiki.Artifacts", "Wiki.Artifacts\Wiki.Artifacts.csproj", "{D07ADCDF-23BE-4D70-A201-D8BFC80EDDA4}"
 EndProject

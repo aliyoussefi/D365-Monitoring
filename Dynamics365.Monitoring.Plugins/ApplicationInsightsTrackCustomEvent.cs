@@ -54,8 +54,7 @@ namespace Dynamics365.Monitoring.Plugins
             tracingService.Trace("Parse and Search Unsecure Config at " + DateTime.Now.ToString());
             doc.LoadXml(_unsecureString);
             _instrumentationKey = GetValueNode(doc, "instrumentationKey");
-            PostBody postBody = new PostBody();
-            postBody.iKey = _instrumentationKey;
+            PostBody postBody = new PostBody() { iKey = _instrumentationKey };
             try {
                 tracingService.Trace("Create Custom Event Data DTO at " + DateTime.Now.ToString());
                 postBody.data.baseData = Events.CreateCustomEventData(postBody.data.baseData, context);
