@@ -1,0 +1,5 @@
+<Settings>
+<setting name="instrumentationKey">
+<value>[MyApplicationInsightsKey]</value>
+</setting>
+</Settings>

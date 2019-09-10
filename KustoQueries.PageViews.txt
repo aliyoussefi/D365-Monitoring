@@ -1,0 +1,12 @@
+//=========================================================================================
+//Show records coming from a Generic Smartphone
+pageViews 
+| where client_Model == "Generic Smartphone" 
+//=========================================================================================
+//Show how to check for specific browser and OS
+pageViews 
+| extend cm=parse_json(customMeasurements)
+| extend cd=parse_json(customDimensions)
+| where duration > 20
+| where client_Browser !contains "Chrome" 
+| where client_OS contains "Windows" 
