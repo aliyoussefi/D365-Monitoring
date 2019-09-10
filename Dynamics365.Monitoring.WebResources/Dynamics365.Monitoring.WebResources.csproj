@@ -36,6 +36,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="CDN\ai.0.js" />
+    <Content Include="CDN\ai.2.js" />
+    <Content Include="CDN\ai.2.min.js" />
     <Content Include="ApplicationInsightsDemo-UCI.js" />
     <Content Include="ApplicationInsightsDemo.js" />
   </ItemGroup>
