@@ -1,0 +1,60 @@
+﻿{
+  "id": "/subscriptions/527e910a-287d-42a6-af7d-995051d65bef/resourceGroups/Dynamics365andAzure/providers/microsoft.insights/activityLogAlerts/Any Service Issue in the US Data Centers",
+  "type": "Microsoft.Insights/ActivityLogAlerts",
+  "name": "Any Service Issue in the US Data Centers",
+  "location": "Global",
+  "kind": null,
+  "tags": {},
+  "properties": {
+    "scopes": [
+      "/subscriptions/527e910a-287d-42a6-af7d-995051d65bef"
+    ],
+    "condition": {
+      "allOf": [
+        {
+          "field": "category",
+          "equals": "ServiceHealth",
+          "containsAny": null,
+          "odata.type": null
+        },
+        {
+          "anyOf": [
+            {
+              "field": "properties.incidentType",
+              "equals": "Incident",
+              "containsAny": null,
+              "odata.type": null
+            }
+          ],
+          "odata.type": null
+        },
+        {
+          "field": "properties.impactedServices[*].ImpactedRegions[*].RegionName",
+          "equals": null,
+          "containsAny": [
+            "",
+            "Central US",
+            "East US",
+            "East US 2",
+            "North Central US",
+            "West US",
+            "West US 2"
+          ],
+          "odata.type": null
+        }
+      ],
+      "odata.type": null
+    },
+    "actions": {
+      "actionGroups": [
+        {
+          "actionGroupId": "/subscriptions/527e910a-287d-42a6-af7d-995051d65bef/resourcegroups/dynamics365andazure/providers/microsoft.insights/actiongroups/send%20email",
+          "webhookProperties": {}
+        }
+      ]
+    },
+    "enabled": true,
+    "description": "Any Service Issue in the US Data Centers"
+  },
+  "identity": null
+}

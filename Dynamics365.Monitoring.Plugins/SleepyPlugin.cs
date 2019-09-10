@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Dynamics.Ready.Plugins {
+namespace Dynamics365.Monitoring.Plugins {
     public class SleepyPlugin : IPlugin {
         public void Execute(IServiceProvider serviceProvider) {
             //https://msdn.microsoft.com/en-us/library/gg509027.aspx

@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{5719205E-BAD4-46B1-9890-CC986E4B10B3}</ProjectGuid>
+    <ProjectGuid>{D07ADCDF-23BE-4D70-A201-D8BFC80EDDA4}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Dynamics365.Monitoring.WebResources</RootNamespace>
-    <AssemblyName>Dynamics365.Monitoring.WebResources</AssemblyName>
-    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+    <RootNamespace>Wiki.Artifacts</RootNamespace>
+    <AssemblyName>Wiki.Artifacts</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
@@ -36,11 +36,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="CDN\ai.0.js" />
-    <Content Include="CDN\ai.2.js" />
-    <Content Include="CDN\ai.2.min.js" />
-    <Content Include="ApplicationInsightsDemo-UCI.js" />
-    <Content Include="ApplicationInsightsDemo.js" />
+    <Content Include="D365 Plugins to Application Insights and Log Analytics-Page-2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

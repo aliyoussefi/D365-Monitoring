@@ -10,12 +10,34 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
+using System.Xml;
 
-namespace Dynamics.Ready.Plugins
-{
+namespace Dynamics365.Monitoring.Plugins {
     public class ApplicationInsightsPostCreate : IPlugin
     {
+        #region prop
+        private readonly string _unsecureString;
+        private readonly string _secureString;
+        private string _instrumentationKey;
+        #endregion
+        #region ctor
+        public ApplicationInsightsPostCreate(string unsecureConfig, string secureConfig) {
+            _unsecureString = unsecureConfig;
+            _secureString = secureConfig;
+        }
+        #endregion
+        #region Helpers
 
+
+        private string GetValueNode(XmlDocument doc, string key) {
+            XmlNode node = doc.SelectSingleNode(String.Format("Settings/setting[@name='{0}']", key));
+
+            if (node != null) {
+                return node.SelectSingleNode("value").InnerText;
+            }
+            return string.Empty;
+        }
+        #endregion
         public void Execute(IServiceProvider serviceProvider) {
             //https://msdn.microsoft.com/en-us/library/gg509027.aspx
             //When you use the Update method or UpdateRequest message, do not set the OwnerId attribute on a record unless the owner has actually changed.
@@ -27,6 +49,9 @@ namespace Dynamics.Ready.Plugins
             // Obtain the execution context from the service provider.
             IPluginExecutionContext context = (IPluginExecutionContext)
                 serviceProvider.GetService(typeof(IPluginExecutionContext));
+            XmlDocument doc = new XmlDocument();
+            doc.LoadXml(_unsecureString);
+            _instrumentationKey = GetValueNode(doc, "instrumentationKey");
             try
             {
                 //Do Sleepy Thread
@@ -247,7 +272,7 @@ namespace Dynamics.Ready.Plugins
             public PostBody() {
                 //Default initialization as an sample
                 name = "Microsoft.ApplicationInsights.Dev.7b18b7f7-3daf-4951-abba-8372cf9b21a9.Event";
-                iKey = "7b18b7f7-3daf-4951-abba-8372cf9b21a9";
+                iKey = "";
                 time = DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss");
 
                 data = new DataModel {
@@ -270,8 +295,8 @@ namespace Dynamics.Ready.Plugins
 
             }
 
-            public PostBody(DataModel dataModel) {
-                name = "Microsoft.ApplicationInsights.Dev.7b18b7f7-3daf-4951-abba-8372cf9b21a9.Event";
+            public PostBody(DataModel dataModel, string instrumentationKey) {
+                name = "Microsoft.ApplicationInsights.Dev." + instrumentationKey + ".Event";
 
                 time = DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss");
 

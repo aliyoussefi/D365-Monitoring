@@ -1,0 +1,22 @@
+//=========================================================================================
+//Show exceptions from iOS
+exceptions
+| where client_Browser == "Mobile Safari UI/WKWebView 12.0"
+//=========================================================================================
+//Show exceptions from non-Web
+exceptions 
+| extend d=parse_json(details) 
+| extend cm=parse_json(customMeasurements) 
+| extend cd=parse_json(customDimensions) 
+| where cd.client !="Web"
+| project timestamp , problemId , type, assembly , 
+method ,d[0].type, d[0].parsedStack[0].line, cd.userName, cd.uniqueName, client_OS , client_Browser , cd
+//=========================================================================================
+//Show exceptions from browsers
+exceptions 
+| extend d=parse_json(details) 
+| extend cm=parse_json(customMeasurements) 
+| extend cd=parse_json(customDimensions) 
+| where client_Type == "Browser"
+| project timestamp , problemId , type, assembly , method 
+,d[0].type, d[0].parsedStack[0].line, cd.userName, cd.uniqueName, client_OS , client_Browser , cd
