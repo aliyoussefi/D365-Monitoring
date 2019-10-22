@@ -28,6 +28,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NewFolder1", "NewFolder1", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wiki.Artifacts", "Wiki.Artifacts\Wiki.Artifacts.csproj", "{D07ADCDF-23BE-4D70-A201-D8BFC80EDDA4}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AzureDevOpsRestApi", "AzureDevOpsRestApi", "{03F1C648-2746-4171-BC34-D7DD3AC1555C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Notifications", "Notifications", "{A2672447-61B9-4DA1-B9CA-74BE0DDFA6A5}"
+	ProjectSection(SolutionItems) = preProject
+		Notifications-Git.txt = Notifications-Git.txt
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -61,6 +68,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A2672447-61B9-4DA1-B9CA-74BE0DDFA6A5} = {03F1C648-2746-4171-BC34-D7DD3AC1555C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {86E66049-02DB-46A6-B7EE-893D972785C4}

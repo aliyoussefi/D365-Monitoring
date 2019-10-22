@@ -1,0 +1,1 @@
+https://dev.azure.com/{org}/_apis/notification/diagnosticlogs/9a688110-9e33-4cdc-affd-75d16303e7f1/entries?startTime=2019-10-01&endTime=2019-10-23
