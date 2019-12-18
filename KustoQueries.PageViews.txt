@@ -10,3 +10,7 @@ pageViews
 | where duration > 20
 | where client_Browser !contains "Chrome" 
 | where client_OS contains "Windows" 
+
+
+
+

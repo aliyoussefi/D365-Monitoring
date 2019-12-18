@@ -20,3 +20,6 @@ exceptions
 | where client_Type == "Browser"
 | project timestamp , problemId , type, assembly , method 
 ,d[0].type, d[0].parsedStack[0].line, cd.userName, cd.uniqueName, client_OS , client_Browser , cd
+
+
+
