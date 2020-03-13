@@ -34,6 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="DevOps-REST-GetProjects.json" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="D365 Plugins to Application Insights and Log Analytics-Page-2.png" />

@@ -1,0 +1,203 @@
+[
+  {
+    "time": "2020-02-21T23:38:18.710Z",
+    "iKey": "12345",
+    "name": "Microsoft.ApplicationInsights.12345.Event",
+    "tags": {
+      "ai.session.id": "O3Z7z",
+      "ai.device.id": "browser",
+      "ai.device.type": "Browser",
+      "ai.internal.sdkVersion": "javascript:1.0.21",
+      "ai.user.id": "xsRzv",
+      "ai.operation.id": "bF/X1",
+      "ai.operation.name": "/uclient/blank.htm"
+    },
+    "data": {
+      "baseType": "EventData",
+      "baseData": {
+        "ver": 2,
+        "name": "RetrieveEntity Begin Send:"
+      }
+    }
+  },
+  {
+    "time": "2020-02-21T23:38:18.710Z",
+    "iKey": "12345",
+    "name": "Microsoft.ApplicationInsights.12345.Event",
+    "tags": {
+      "ai.session.id": "O3Z7z",
+      "ai.device.id": "browser",
+      "ai.device.type": "Browser",
+      "ai.internal.sdkVersion": "javascript:1.0.21",
+      "ai.user.id": "xsRzv",
+      "ai.operation.id": "bF/X1",
+      "ai.operation.name": "/uclient/blank.htm"
+    },
+    "data": {
+      "baseType": "EventData",
+      "baseData": {
+        "ver": 2,
+        "name": "RetrieveEntity Begin Send:"
+      }
+    }
+  }
+]
+
+
+
+  {
+    "time": "2020-02-21T23:38:19.945Z",
+    "iKey": "12345",
+    "name": "Microsoft.ApplicationInsights.12345.Metric",
+    "tags": {
+      "ai.session.id": "O3Z7z",
+      "ai.device.id": "browser",
+      "ai.device.type": "Browser",
+      "ai.internal.sdkVersion": "javascript:1.0.21",
+      "ai.user.id": "xsRzv",
+      "ai.operation.id": "bF/X1",
+      "ai.operation.name": "/uclient/blank.htm"
+    },
+    "data": {
+      "baseType": "MetricData",
+      "baseData": {
+        "ver": 2,
+        "metrics": [
+          {
+            "name": "RetrieveEntity Response Returned using resource entry: https://alyousse.crm.dynamics.com/api/data/v8.2/accounts with status of 200",
+            "kind": 0,
+            "value": 1226.1949999956414,
+            "count": 23,
+            "min": 121847.88000001572,
+            "max": 123074.07500001136
+          }
+        ],
+        "properties": {
+          "Source": "WebResource",
+          "Verb": "GET",
+          "Status": "200",
+          "RequestLimits": "5939",
+          "URL": "https://alyousse.crm.dynamics.com/api/data/v8.2/accounts",
+          "resource": "{\"name\":\"https://alyousse.crm.dynamics.com/api/data/v8.2/accounts\",\"entryType\":\"resource\",\"startTime\":121847.88000001572,\"duration\":1226.1949999956414,\"initiatorType\":\"xmlhttprequest\",\"nextHopProtocol\":\"http/1.1\",\"workerStart\":0,\"redirectStart\":0,\"redirectEnd\":0,\"fetchStart\":121847.88000001572,\"domainLookupStart\":121847.88000001572,\"domainLookupEnd\":121847.88000001572,\"connectStart\":121847.88000001572,\"connectEnd\":121847.88000001572,\"secureConnectionStart\":121847.88000001572,\"requestStart\":121851.10500000883,\"responseStart\":123067.82500000554,\"responseEnd\":123074.07500001136,\"transferSize\":5504,\"encodedBodySize\":4524,\"decodedBodySize\":112660,\"serverTiming\":[]}",
+          "request": "{\"verb\":\"GET\",\"status\":200,\"requestLimits\":\"5939\",\"url\":\"https://alyousse.crm.dynamics.com/api/data/v8.2/accounts\"}"
+        }
+      }
+    }
+  },
+  {
+    "time": "2020-02-21T23:38:19.946Z",
+    "iKey": "12345",
+    "name": "Microsoft.ApplicationInsights.12345.Event",
+    "tags": {
+      "ai.session.id": "O3Z7z",
+      "ai.device.id": "browser",
+      "ai.device.type": "Browser",
+      "ai.internal.sdkVersion": "javascript:1.0.21",
+      "ai.user.id": "xsRzv",
+      "ai.operation.id": "bF/X1",
+      "ai.operation.name": "/uclient/blank.htm"
+    },
+    "data": {
+      "baseType": "EventData",
+      "baseData": {
+        "ver": 2,
+        "name": "RetrieveEntity Response Returned: https://alyousse.crm.dynamics.com/api/data/v8.2/accounts with status of 200"
+      }
+    }
+  },
+  {
+    "time": "2020-02-21T23:38:19.950Z",
+    "iKey": "12345",
+    "name": "Microsoft.ApplicationInsights.12345.Exception",
+    "tags": {
+      "ai.session.id": "O3Z7z",
+      "ai.device.id": "browser",
+      "ai.device.type": "Browser",
+      "ai.internal.sdkVersion": "javascript:1.0.21",
+      "ai.user.id": "xsRzv",
+      "ai.operation.id": "bF/X1",
+      "ai.operation.name": "/uclient/blank.htm"
+    },
+    "data": {
+      "baseType": "ExceptionData",
+      "baseData": {
+        "ver": 2,
+        "exceptions": [
+          {
+            "typeName": "ReferenceError",
+            "message": "PfeAppInsights is not defined",
+            "hasFullStack": true,
+            "stack": "ReferenceError: PfeAppInsights is not defined\n    at https://alyousse.crm.dynamics.com/%7b637174217140012935%7d/webresources/ayw_/scripts/applicationinsights/tracktelemetry.js:91:17\n    at Array.forEach (<anonymous>)\n    at uploadResourceTimings (https://alyousse.crm.dynamics.com/%7b637174217140012935%7d/webresources/ayw_/scripts/applicationinsights/tracktelemetry.js:89:23)\n    at sp.executeFunction (https://alyousse.crm.dynamics.com/uclient/scripts/app.js?v=1.3.379-2001.2:1163:2771)\n    at sp.execute (https://alyousse.crm.dynamics.com/uclient/scripts/app.js?v=1.3.379-2001.2:1163:2431)\n    at tp._executeIndividualEvent (https://alyousse.crm.dynamics.com/uclient/scripts/app.js?v=1.3.379-2001.2:1160:19616)\n    at tp._executeEventHandler (https://alyousse.crm.dynamics.com/uclient/scripts/app.js?v=1.3.379-2001.2:1160:18284)\n    at Object.execute (https://alyousse.crm.dynamics.com/uclient/scripts/app.js?v=1.3.379-2001.2:1160:17760)\n    at O._executeSyncAction (https://alyousse.crm.dynamics.com/uclient/scripts/app.js?v=1.3.379-2001.2:610:692)\n    at O._executeSync (https://alyousse.crm.dynamics.com/uclient/scripts/app.js?v=1.3.379-2001.2:610:419)",
+            "parsedStack": [
+              {
+                "level": 0,
+                "method": "<no_method>",
+                "assembly": "at https://alyousse.crm.dynamics.com/%7b637174217140012935%7d/webresources/ayw_/scripts/applicationinsights/tracktelemetry.js:91:17",
+                "fileName": "https://alyousse.crm.dynamics.com/%7b637174217140012935%7d/webresources/ayw_/scripts/applicationinsights/tracktelemetry.js",
+                "line": 91
+              },
+              {
+                "level": 1,
+                "method": "uploadResourceTimings",
+                "assembly": "at uploadResourceTimings (https://alyousse.crm.dynamics.com/%7b637174217140012935%7d/webresources/ayw_/scripts/applicationinsights/tracktelemetry.js:89:23)",
+                "fileName": "https://alyousse.crm.dynamics.com/%7b637174217140012935%7d/webresources/ayw_/scripts/applicationinsights/tracktelemetry.js",
+                "line": 89
+              },
+              {
+                "level": 2,
+                "method": "sp.executeFunction",
+                "assembly": "at sp.executeFunction (https://alyousse.crm.dynamics.com/uclient/scripts/app.js?v=1.3.379-2001.2:1163:2771)",
+                "fileName": "https://alyousse.crm.dynamics.com/uclient/scripts/app.js?v=1.3.379-2001.2",
+                "line": 1163
+              },
+              {
+                "level": 3,
+                "method": "sp.execute",
+                "assembly": "at sp.execute (https://alyousse.crm.dynamics.com/uclient/scripts/app.js?v=1.3.379-2001.2:1163:2431)",
+                "fileName": "https://alyousse.crm.dynamics.com/uclient/scripts/app.js?v=1.3.379-2001.2",
+                "line": 1163
+              },
+              {
+                "level": 4,
+                "method": "tp._executeIndividualEvent",
+                "assembly": "at tp._executeIndividualEvent (https://alyousse.crm.dynamics.com/uclient/scripts/app.js?v=1.3.379-2001.2:1160:19616)",
+                "fileName": "https://alyousse.crm.dynamics.com/uclient/scripts/app.js?v=1.3.379-2001.2",
+                "line": 1160
+              },
+              {
+                "level": 5,
+                "method": "tp._executeEventHandler",
+                "assembly": "at tp._executeEventHandler (https://alyousse.crm.dynamics.com/uclient/scripts/app.js?v=1.3.379-2001.2:1160:18284)",
+                "fileName": "https://alyousse.crm.dynamics.com/uclient/scripts/app.js?v=1.3.379-2001.2",
+                "line": 1160
+              },
+              {
+                "level": 6,
+                "method": "Object.execute",
+                "assembly": "at Object.execute (https://alyousse.crm.dynamics.com/uclient/scripts/app.js?v=1.3.379-2001.2:1160:17760)",
+                "fileName": "https://alyousse.crm.dynamics.com/uclient/scripts/app.js?v=1.3.379-2001.2",
+                "line": 1160
+              },
+              {
+                "level": 7,
+                "method": "O._executeSyncAction",
+                "assembly": "at O._executeSyncAction (https://alyousse.crm.dynamics.com/uclient/scripts/app.js?v=1.3.379-2001.2:610:692)",
+                "fileName": "https://alyousse.crm.dynamics.com/uclient/scripts/app.js?v=1.3.379-2001.2",
+                "line": 610
+              },
+              {
+                "level": 8,
+                "method": "O._executeSync",
+                "assembly": "at O._executeSync (https://alyousse.crm.dynamics.com/uclient/scripts/app.js?v=1.3.379-2001.2:610:419)",
+                "fileName": "https://alyousse.crm.dynamics.com/uclient/scripts/app.js?v=1.3.379-2001.2",
+                "line": 610
+              }
+            ]
+          }
+        ],
+        "properties": null,
+        "measurements": null
+      }
+    }
+  }
+]

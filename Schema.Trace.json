@@ -1,0 +1,19 @@
+{
+  "name": "Microsoft.ApplicationInsights.7b18b7f73daf4951abba8372cf9b21a9.Message",
+  "time": "2019-12-12T22:18:40.7936166Z",
+  "seq": "500",
+  "iKey": "7b18b7f7-3daf-4951-abba-8372cf9b21a9",
+  "tags": {
+    "ai.internal.sdkVersion": "dotnet:2.4.0-32153",
+    "ai.cloud.roleInstance": "MININT-EMNVBAV",
+    "ai.operation.name": "TestTrace_telemetry Unit TEST"
+  },
+  "data": {
+    "baseType": "MessageData",
+    "baseData": {
+      "ver": 2,
+      "message": "This is from the TestTrace_telemetry Unit Test",
+      "severityLevel": "Information"
+    }
+  }
+}

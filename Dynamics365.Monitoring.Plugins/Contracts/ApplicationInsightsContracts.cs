@@ -40,6 +40,12 @@ namespace Dynamics365.Monitoring.Plugins.Contracts {
         public Dictionary<string, string> properties;
         public List<MetricDetails> metrics;
     }
+    public class TraceData : BaseData
+    {
+        public int ver;
+        public string message;
+        public string severityLevel;
+    }
     public class MetricDetails {
         public string name { get; set; }
         public int value { get; set; }

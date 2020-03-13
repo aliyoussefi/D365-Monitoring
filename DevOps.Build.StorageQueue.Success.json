@@ -1,0 +1,67 @@
+{
+	"id": "245c5e79-4cdb-4f48-a13b-4aeb59ab22eb",
+	"eventType": "build.complete",
+	"publisherId": "tfs",
+	"message": {
+		"text": "Build 20191109.1 succeeded",
+		"html": "Build <a href=\"https://dev.azure.com/mip-d365-easyrepro/web/build.aspx?pcguid=65b53e70-3063-4593-8340-1c931df9379d&amp;builduri=vstfs%3a%2f%2f%2fBuild%2fBuild%2f57\">20191109.1</a> succeeded",
+		"markdown": "Build [20191109.1](https://dev.azure.com/mip-d365-easyrepro/web/build.aspx?pcguid=65b53e70-3063-4593-8340-1c931df9379d&builduri=vstfs%3a%2f%2f%2fBuild%2fBuild%2f57) succeeded"
+	},
+	"detailedMessage": {
+		"text": "Build 20191109.1 succeeded",
+		"html": "Build <a href=\"https://dev.azure.com/mip-d365-easyrepro/web/build.aspx?pcguid=65b53e70-3063-4593-8340-1c931df9379d&amp;builduri=vstfs%3a%2f%2f%2fBuild%2fBuild%2f57\">20191109.1</a> succeeded",
+		"markdown": "Build [20191109.1](https://dev.azure.com/mip-d365-easyrepro/web/build.aspx?pcguid=65b53e70-3063-4593-8340-1c931df9379d&builduri=vstfs%3a%2f%2f%2fBuild%2fBuild%2f57) succeeded"
+	},
+	"resource": {
+		"uri": "vstfs:///Build/Build/57",
+		"id": 57,
+		"buildNumber": "20191109.1",
+		"url": "https://dev.azure.com/mip-d365-easyrepro/dbf0edd0-8900-4211-b91d-3053ab6f7128/_apis/build/Builds/57",
+		"startTime": "2019-11-09T21:31:51.3310423Z",
+		"finishTime": "2019-11-09T21:33:06.3677215Z",
+		"reason": "manual",
+		"status": "succeeded",
+		"drop": {},
+		"log": {},
+		"sourceGetVersion": "LG:refs/heads/feature/vstest:e10a0af6974e81f9c8ca9c0bff95da17cd5902a9",
+		"lastChangedBy": {
+			"displayName": "Microsoft.VisualStudio.Services.TFS",
+			"id": "00000000-0000-0000-0000-000000000000",
+			"uniqueName": "00000002-0000-8888-8000-000000000000@2c895908-04e0-4952-89fd-54b0046d6288"
+		},
+		"retainIndefinitely": false,
+		"definition": {
+			"definitionType": "xaml",
+			"id": 3,
+			"name": "Run VSTest Unit Tests from feature branch",
+			"url": "https://dev.azure.com/mip-d365-easyrepro/dbf0edd0-8900-4211-b91d-3053ab6f7128/_apis/build/Definitions/3"
+		},
+		"requests": [
+			{
+				"id": 57,
+				"url": "https://dev.azure.com/mip-d365-easyrepro/dbf0edd0-8900-4211-b91d-3053ab6f7128/_apis/build/Requests/57",
+				"requestedFor": {
+					"displayName": "Ali Youssefi",
+					"id": "34af508d-e817-49bb-90ce-d87dc7c2cb2f",
+					"uniqueName": "alyousse@microsoft.com"
+				}
+			}
+		]
+	},
+	"resourceVersion": "1.0",
+	"resourceContainers": {
+		"collection": {
+			"id": "65b53e70-3063-4593-8340-1c931df9379d",
+			"baseUrl": "https://dev.azure.com/mip-d365-easyrepro/"
+		},
+		"account": {
+			"id": "b873325f-2fed-47f3-8517-27c96e5b9a36",
+			"baseUrl": "https://dev.azure.com/mip-d365-easyrepro/"
+		},
+		"project": {
+			"id": "dbf0edd0-8900-4211-b91d-3053ab6f7128",
+			"baseUrl": "https://dev.azure.com/mip-d365-easyrepro/"
+		}
+	},
+	"createdDate": "2019-11-09T21:33:19.1056125Z"
+}

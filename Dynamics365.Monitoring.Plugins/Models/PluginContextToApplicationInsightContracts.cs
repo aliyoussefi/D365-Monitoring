@@ -62,8 +62,9 @@ namespace Dynamics365.Monitoring.Plugins.Models {
             data.properties.Add("Depth", context.Depth.ToString());
             data.properties.Add("Synchorous", context.Mode.ToString());
             data.properties.Add("CorrelationId", context.CorrelationId.ToString());
-            data.properties.Add("RequestId", context.RequestId.ToString());
             return data;
         }
     }
+
+
 }

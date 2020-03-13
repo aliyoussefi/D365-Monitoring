@@ -1,0 +1,30 @@
+{
+  "instrumentationKey": "7b18b7f7-3daf-4951-abba-8372cf9b21a9",
+  "disableTelemetry": false,
+  "application": { "ver": "2.9" },
+  "isBrowserLinkTrackingEnabled": true,
+  //autoTrackPageView will write to customMetrics
+  "autoTrackPageVisitTime": true,
+  "disableAjaxTracking": false,
+  "verboseLogging": true,
+  "enableDebug": true,
+  "disablePageviewTracking": true,
+  "percentLoggedPageview": true,
+  "disablePageLoadTimeTracking": true,
+  "percentLoggedPageLoadTime": true,
+  "disablePageSaveTimeTracking": true,
+  "percentLoggedPageSaveTime": true,
+  "disableExceptionTracking": true,
+  "percentLoggedException": true,
+  "disableAjaxTracking": true,
+  "maxAjaxCallsPerView": true,
+  "disableTraceTracking": true,
+  "percentLoggedTrace": true,
+  "disableDependencyTracking": true,
+  "percentLoggedDependency": true,
+  "disableMetricTracking": true,
+  "percentLoggedMetric": true,
+  "disableEventTracking": true,
+  "percentLoggedEvent": true
+
+}

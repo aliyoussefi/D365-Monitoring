@@ -1,0 +1,35 @@
+swagger: '2.0'
+info: {title: D365-Telemetry Connector, description: '', version: '1.0'}
+host: dc.services.visualstudio.com
+basePath: /v2
+schemes: [https]
+consumes: []
+produces: []
+paths:
+  /track:
+    post:
+      responses:
+        default:
+          description: default
+          schema: {}
+      summary: Post CustomEvent
+      description: Post CustomEvent
+      operationId: PostCustomEvent
+      parameters:
+      - name: body
+        in: body
+        required: true
+        schema:
+          type: object
+          properties:
+            ver: {type: integer, format: int32, description: ver, title: version}
+            name: {type: string, description: name, title: Message}
+          required: [ver]
+definitions: {}
+parameters: {}
+responses: {}
+securityDefinitions:
+  API Key: {type: apiKey, in: header, name: InstrumenationKey}
+security:
+- API Key: []
+tags: []

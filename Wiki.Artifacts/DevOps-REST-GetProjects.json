@@ -1,0 +1,14 @@
+{
+  "count": 1,
+  "value": [
+    {
+      "id": "3857b16c-957a-4221-884c-7974a1d06dae",
+      "name": "PFE Sample Code",
+      "url": "https://dev.azure.com/D365PFECRM/_apis/projects/3857b16c-957a-4221-884c-7974a1d06dae",
+      "state": "wellFormed",
+      "revision": 19,
+      "visibility": "public",
+      "lastUpdateTime": "2019-11-04T15:38:16.723Z"
+    }
+  ]
+}

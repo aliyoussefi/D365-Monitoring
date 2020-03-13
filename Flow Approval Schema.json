@@ -1,0 +1,58 @@
+{
+    "type": "object",
+    "properties": {
+        "approvers": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "displayName": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "tenantId": {
+                        "type": "string"
+                    },
+                    "userPrincipalName": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "id",
+                    "displayName",
+                    "email",
+                    "tenantId",
+                    "userPrincipalName"
+                ]
+            }
+        },
+        "respondLink": {
+            "type": "string"
+        },
+        "adaptiveCard": {
+            "type": "string"
+        },
+        "approvals": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "displayName": {
+                        "type": "string"
+                    },
+                    "url": {
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    }
+}

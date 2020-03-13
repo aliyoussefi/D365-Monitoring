@@ -34,6 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="ApplicationInsightsConfiguration.json" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="ApplicationInsights-ai2.0-Demo.js" />
@@ -42,6 +43,8 @@
     <Content Include="CDN\ai.2.min.js" />
     <Content Include="ApplicationInsightsDemo-UCI.js" />
     <Content Include="ApplicationInsightsDemo.js" />
+    <Content Include="JasonLattimerApplicationInsightsScript.js" />
+    <Content Include="trackTelemetry.js" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

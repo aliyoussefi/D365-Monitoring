@@ -1,0 +1,55 @@
+{
+    "swagger":"2.0",
+    "info": {
+        "title":"API Title",
+        "version":"1.0"
+    },
+    "host": "api.server.test",
+    "basePath": "/",
+    "schemes": ["https"],
+    "paths": {
+        "/apps/{appId}/metrics/{metricId}": {
+            "post": {
+              "operationId": "Metrics_Get",
+              "summary": "Retrieve metric data",
+              "description": "Gets metric values for a single metric",
+              "x-ms-examples": {
+                "simpleMetric": {
+                  "$ref": "examples/metric-get.json"
+                },
+                "intervaledMetric": {
+                  "$ref": "examples/metric-get-full.json"
+                },
+                "segmentedIntervaledMetric": {
+                  "$ref": "examples/metric-get-segmented.json"
+                }
+              },
+              "parameters": [
+                {
+                  "$ref": "#/parameters/appId"
+                },
+                {
+                  "$ref": "#/parameters/metricId"
+                },
+                {
+                  "$ref": "#/parameters/metricsTimespan"
+                }
+              ],
+              "responses": {
+                "200": {
+                  "description": "Successful response",
+                  "schema": {
+                    "$ref": "#/definitions/metricsResult"
+                  }
+                },
+                "default": {
+                  "description": "An error response object.",
+                  "schema": {
+                    "$ref": "#/definitions/errorResponse"
+                  }
+                }
+              }
+            }
+          }
+    }
+}
