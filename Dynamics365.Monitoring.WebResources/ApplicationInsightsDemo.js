@@ -257,7 +257,7 @@ function captureTelemetry(formContext) {
             return s !== !0 && t["_" + r](config, i, u, e, o), s
         }), t
     }({
-        instrumentationKey: "7b18b7f7-3daf-4951-abba-8372cf9b21a9",
+        instrumentationKey: "",
         disableTelemetry: false,
         application: { ver: "2.9" },
         isBrowserLinkTrackingEnabled: true,

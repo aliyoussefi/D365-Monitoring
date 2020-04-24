@@ -1,0 +1,917 @@
+{
+  "CustomControl": {
+    "microsoftdynamics": {
+      "BaseCustomControlsCore": {
+        "9.0.2002.1002": {
+          "MscrmControls.Containers.FieldSectionItem": {
+            "updateView": [
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              }
+            ]
+          },
+          "MscrmControls.FieldControls.SimpleLookupControl": {
+            "updateView": [
+              {
+                "d": 0
+              },
+              {
+                "d": 1
+              },
+              {
+                "d": 2
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 2
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 1
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 1
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 1
+              },
+              {
+                "d": 2
+              },
+              {
+                "d": 1
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 1
+              },
+              {
+                "d": 2
+              },
+              {
+                "d": 1
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 1
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 1
+              },
+              {
+                "d": 0
+              }
+            ]
+          },
+          "MscrmControls.Grid.ReadOnlyGrid": {
+            "updateView": [
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              }
+            ]
+          },
+          "MscrmControls.FieldControls.OptionSet": {
+            "updateView": [
+              {
+                "d": 1
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              }
+            ]
+          },
+          "MscrmControls.FieldControls.TextBoxControl": {
+            "updateView": [
+              {
+                "d": 1
+              },
+              {
+                "d": 1
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              }
+            ]
+          },
+          "MscrmControls.FieldControls.DateTimeControl": {
+            "updateView": [
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              }
+            ]
+          },
+          "MscrmControls.FieldControls.DateControl": {
+            "updateView": [
+              {
+                "d": 1
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              }
+            ]
+          },
+          "MscrmControls.FieldControls.TimeControl": {
+            "updateView": [
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              }
+            ]
+          },
+          "MscrmControls.FieldControls.DecimalNumberControl": {
+            "updateView": [
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              }
+            ]
+          },
+          "MscrmControls.FieldControls.UrlControl": {
+            "updateView": [
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              }
+            ]
+          }
+        }
+      },
+      "CustomControlsCore": {
+        "9.1.0000.13841": {
+          "MscrmControls.FieldControls.TimeZonePickListControl": {
+            "updateView": [
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              }
+            ]
+          }
+        }
+      }
+    }
+  },
+  "CommandExecution": {
+    "MicrosoftCorporation": {
+      "System": {
+        "5.0": {
+          "Main_system_library.js": {
+            "XrmCore.Commands.Save.saveForm": [
+              {
+                "d": 4
+              }
+            ]
+          }
+        }
+      }
+    }
+  },
+  "onsave": {
+    "MicrosoftCorporation": {
+      "msdynce_ServicePatch201911": {
+        "9.0.20013.1008": {
+          "Service/Incident/Incident_main_system_library.js": {
+            "Mscrm.IncidentMainSystemLibraryWebResource.form_OnSave": [
+              {
+                "d": 3
+              }
+            ]
+          }
+        }
+      }
+    },
+    "adobeenterprise": {
+      "entservicecodebase_Patch_59703ea8": {
+        "1.68.2.18": {
+          "ent_/scripts/dependentoptionsetoperation.js": {
+            "AdobeEnt.DependentOptionSet.LockFields": [
+              {
+                "d": 3
+              }
+            ]
+          }
+        }
+      },
+      "entservicecodebase_Patch_64e1fa81": {
+        "1.68.3.15": {
+          "ent_/scripts/casemain.js": {
+            "AdobeEnt.CaseMain.CheckWatchersFormat": [
+              {
+                "d": 1
+              }
+            ],
+            "AdobeEnt.CaseMain.SetThreeStrikePreferenceValueonLoad": [
+              {
+                "d": 2
+              }
+            ]
+          }
+        }
+      }
+    }
+  },
+  "RuleEvaluation": {
+    "microsoftdynamics": {
+      "AppforOutlookPatch": {
+        "1.2.353.0": {
+          "new_MailAppScriptResource": {
+            "HasMailContextAction": [
+              {
+                "d": 1
+              }
+            ],
+            "HasMailContext": [
+              {
+                "d": 0
+              }
+            ]
+          }
+        }
+      },
+      "YammerIntegration": {
+        "9.1.1.001": {
+          "msdyn_/YammerIntegration/Yammer_main_system_library.js": {
+            "Yammer.Rules.showYammer": [
+              {
+                "d": 1
+              }
+            ]
+          }
+        }
+      },
+      "msdynce_OfficeProductivity": {
+        "9.0.2.11021": {
+          "msdyn_/OfficeProductivity.js": {
+            "OfficeProductivity.RibbonRules.showMSTeamsCollaborateCommand": [
+              {
+                "d": 1
+              }
+            ],
+            "OfficeProductivity.RibbonRules.hideCollaborateCommandForContextualEmail": [
+              {
+                "d": 0
+              }
+            ]
+          }
+        }
+      },
+      "msdyn_Playbook": {
+        "9.0.1912.1020": {
+          "Playbook/CommandBarActions/Playbook_CommandBarActions_library.js": {
+            "PlaybookService.CommandBarActions.isDisplayPlayBook": [
+              {
+                "d": 0
+              }
+            ]
+          }
+        }
+      },
+      "ActivityFeedsCore": {
+        "9.0.0.0": {
+          "msdyn_/Follow.Command.js": {
+            "Follow.FollowCommands.dummy": [
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              }
+            ],
+            "Follow.FollowEnabled.isFollowButtonEnabled": [
+              {
+                "d": 1
+              },
+              {
+                "d": 0
+              }
+            ],
+            "Follow.FollowEnableYammerCheck.shouldEnableFollow": [
+              {
+                "d": 0
+              }
+            ]
+          },
+          "msdyn_/Scripts/PlatformScriptLoader.js": {
+            "Follow.FollowCommands.dummy": [
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              }
+            ]
+          },
+          "msdyn_/InstalledLocales.js": {
+            "Follow.FollowCommands.dummy": [
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              }
+            ]
+          }
+        }
+      }
+    },
+    "MicrosoftCorporation": {
+      "System": {
+        "5.0": {
+          "Main_system_library.js": {
+            "XrmCore.Rules.Online.IsEntityAvailableForUserInMocaOffline": [
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              }
+            ],
+            "XrmCore.Rules.AutoSave.isAutoSaveEnabled": [
+              {
+                "d": 0
+              },
+              {
+                "d": 0
+              }
+            ],
+            "Mscrm.WorkflowWebResource.CanSwitchProcess": [
+              {
+                "d": 0
+              }
+            ],
+            "Mscrm.WorkflowWebResource.IsBusinessProcessPresent": [
+              {
+                "d": 0
+              }
+            ],
+            "Mscrm.WorkflowWebResource.ShowAbandon": [
+              {
+                "d": 6
+              }
+            ],
+            "Mscrm.WorkflowWebResource.ShowReactivate": [
+              {
+                "d": 4
+              }
+            ],
+            "Mscrm.WorkflowWebResource.ShowFinish": [
+              {
+                "d": 3
+              }
+            ],
+            "XrmCore.Rules.Hierarchy.IsFormHierarchyEnabled": [
+              {
+                "d": 0
+              }
+            ],
+            "XrmCore.InternalUtilities.DialogUtilities.isAllowLegacyDialogsEmbedding": [
+              {
+                "d": 0
+              }
+            ],
+            "XrmCore.Commands.Flows.isMicrosoftFlowEnabled": [
+              {
+                "d": 0
+              }
+            ]
+          }
+        }
+      },
+      "msdynce_ServicePatch201911": {
+        "9.0.20013.1008": {
+          "Service/Incident/Ribbon/Incident_ribbon_library.js": {
+            "CrmService.IncidentRibbon.CommandBarActions.isNotChildCase": [
+              {
+                "d": 1
+              }
+            ]
+          }
+        }
+      }
+    },
+    "adobeenterprise": {
+      "entservicecodebase": {
+        "1.68.0.0": {
+          "ent_/scripts/caseribbon.js": {
+            "AdobeEnt.CaseRibbon.ShowHideReopenCaseButton": [
+              {
+                "d": 1
+              }
+            ],
+            "AdobeEnt.CaseRibbon.HideExistingCloseCaseButton": [
+              {
+                "d": 0
+              }
+            ],
+            "AdobeEnt.CaseRibbon.CloseCaseButtonVisibility": [
+              {
+                "d": 0
+              }
+            ],
+            "AdobeEnt.CaseRibbon.ShowHideAssignToMeButton": [
+              {
+                "d": 1
+              }
+            ]
+          }
+        }
+      }
+    },
+    "coveo": {
+      "CoveoSearch": {
+        "1.1.190201.2": {
+          "coveo_/scripts/ribboncommands.js": {
+            "CoveoForDynamics.ribboncommands.supportsSidePanels": [
+              {
+                "d": 0
+              }
+            ]
+          }
+        }
+      }
+    }
+  }
+}
