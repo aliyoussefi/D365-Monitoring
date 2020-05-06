@@ -26,8 +26,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NewFolder1", "NewFolder1", 
 		DevOps.Build.StorageQueue.FailedBuildExample.json = DevOps.Build.StorageQueue.FailedBuildExample.json
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wiki.Artifacts", "Wiki.Artifacts\Wiki.Artifacts.csproj", "{D07ADCDF-23BE-4D70-A201-D8BFC80EDDA4}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -54,10 +52,6 @@ Global
 		{08B5C21D-8C87-439C-BD18-0EBC5D4A8BC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{08B5C21D-8C87-439C-BD18-0EBC5D4A8BC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{08B5C21D-8C87-439C-BD18-0EBC5D4A8BC7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D07ADCDF-23BE-4D70-A201-D8BFC80EDDA4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D07ADCDF-23BE-4D70-A201-D8BFC80EDDA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D07ADCDF-23BE-4D70-A201-D8BFC80EDDA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D07ADCDF-23BE-4D70-A201-D8BFC80EDDA4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

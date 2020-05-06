@@ -38,5 +38,8 @@
   <ItemGroup>
     <Content Include="D365 Plugins to Application Insights and Log Analytics-Page-2.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Class1.cs" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
