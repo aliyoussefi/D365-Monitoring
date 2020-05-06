@@ -1,6 +1,8 @@
 name: Publish NuGet Package for .NET Framework DLL
  
-on: [push]
+on:
+  issues:
+    types: [milestoned]
  
 jobs:
   build:
