@@ -17,8 +17,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "KustoQueries", "KustoQuerie
 		KustoQueries.PageViews.txt = KustoQueries.PageViews.txt
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dynamics365.Monitoring.AzureFunctions", "Dynamics365.Monitoring.AzureFunctions\Dynamics365.Monitoring.AzureFunctions.csproj", "{89BE2D50-1BE0-47BB-8D5F-EE53B7C74E33}"
-EndProject
 Project("{151D2E53-A2C4-4D7D-83FE-D05416EBD58E}") = "AzureMonitorResourceGroup", "AzureMonitorResourceGroup\AzureMonitorResourceGroup.deployproj", "{08B5C21D-8C87-439C-BD18-0EBC5D4A8BC7}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NewFolder1", "NewFolder1", "{3DB43E61-69E6-4661-83AA-014099639090}"
@@ -44,10 +42,6 @@ Global
 		{DF9F0213-6C0F-41C3-9C35-5078301EDFD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DF9F0213-6C0F-41C3-9C35-5078301EDFD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DF9F0213-6C0F-41C3-9C35-5078301EDFD0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{89BE2D50-1BE0-47BB-8D5F-EE53B7C74E33}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{89BE2D50-1BE0-47BB-8D5F-EE53B7C74E33}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{89BE2D50-1BE0-47BB-8D5F-EE53B7C74E33}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{89BE2D50-1BE0-47BB-8D5F-EE53B7C74E33}.Release|Any CPU.Build.0 = Release|Any CPU
 		{08B5C21D-8C87-439C-BD18-0EBC5D4A8BC7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{08B5C21D-8C87-439C-BD18-0EBC5D4A8BC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{08B5C21D-8C87-439C-BD18-0EBC5D4A8BC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
