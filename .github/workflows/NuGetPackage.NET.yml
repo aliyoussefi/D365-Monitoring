@@ -10,6 +10,11 @@ jobs:
     runs-on: windows-latest
  
     steps:
+    - name: Dump GitHub context
+      env:
+        GITHUB_CONTEXT: ${{ toJson(github) }}
+      run: echo "$GITHUB_CONTEXT"
+
     - uses: actions/checkout@v1
       name: Checkout Code
      
@@ -29,7 +34,7 @@ jobs:
       run: nuget pack nuspec\D365.Monitoring.nuspec  -prop configuration=debug -BasePath Dynamics365.Monitoring.Plugins\
  
     - name: Push generated package to GitHub registry
-      run: dotnet nuget push *.nupkg --skip-duplicate --no-symbols true --source https://www.nuget.org/api/v2/package -k NUGET_API_TOKEN
+      run: dotnet nuget push *.nupkg --skip-duplicate --no-symbols true --source https://api.nuget.org/v3/index.json -k NUGET_API_TOKEN
  
     - name: Upload Artifact
       uses: actions/upload-artifact@v1.0.0
