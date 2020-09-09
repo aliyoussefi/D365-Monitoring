@@ -1,0 +1,44 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "appService_AzureFunctionAndApplicationInsights_name": {
+      "type": "string"
+    },
+    "storageaccount_d365andazurestorage": {
+      "type": "string"
+    }
+  },
+  "resources": [
+    {
+      "location": "South Central US",
+      "name": "[parameters('appService_AzureFunctionAndApplicationInsights_name')]",
+      "type": "Microsoft.Web/sites",
+      "apiVersion": "2015-08-01",
+      "kind": "functionapp",
+      "properties": {
+        "name": "[parameters('appService_AzureFunctionAndApplicationInsights_name')]",
+        "kind": "functionapp",
+        "httpsOnly": true
+      },
+      "resources": [
+        {
+          "name": "appsettings",
+          "type": "config",
+          "apiVersion": "2015-08-01",
+          "dependsOn": [
+            "[concat('Microsoft.Web/Sites/', parameters('appService_AzureFunctionAndApplicationInsights_name'))]"
+          ],
+          "properties": {
+            "WEBSITE_CONTENTAZUREFILECONNECTIONSTRING": "[concat('DefaultEndpointsProtocol=https;AccountName=', parameters('storageaccount_d365andazurestorage'), ';AccountKey=', listKeys(resourceId('Dynamics365andAzure','Microsoft.Storage/storageAccounts', parameters('storageaccount_d365andazurestorage')), '2015-06-15').key1, ';EndpointSuffix=', 'core.windows.net')]",
+            "WEBSITE_CONTENTSHARE": "[toLower(parameters('appService_AzureFunctionAndApplicationInsights_name'))]",
+            "AzureWebJobsDashboard": "[concat('DefaultEndpointsProtocol=https;AccountName=', parameters('storageaccount_d365andazurestorage'), ';AccountKey=', listKeys(resourceId('Dynamics365andAzure','Microsoft.Storage/storageAccounts', parameters('storageaccount_d365andazurestorage')), '2015-06-15').key1, ';EndpointSuffix=', 'core.windows.net')]",
+            "AzureWebJobsStorage": "[concat('DefaultEndpointsProtocol=https;AccountName=', parameters('storageaccount_d365andazurestorage'), ';AccountKey=', listKeys(resourceId('Dynamics365andAzure','Microsoft.Storage/storageAccounts', parameters('storageaccount_d365andazurestorage')), '2015-06-15').key1, ';EndpointSuffix=', 'core.windows.net')]",
+            "FUNCTIONS_EXTENSION_VERSION": "~3",
+            "FUNCTIONS_WORKER_RUNTIME": "dotnet"
+          }
+        }
+      ]
+    }
+  ]
+}

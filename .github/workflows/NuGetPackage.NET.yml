@@ -36,3 +36,4 @@ jobs:
       with:
         name: published_webapp
         path: bin\Release\Publish
+        
