@@ -29,7 +29,7 @@ jobs:
       run: nuget pack nuspec\D365.Monitoring.nuspec  -prop configuration=debug -BasePath Dynamics365.Monitoring.Plugins\
  
     - name: Push generated package to GitHub registry
-      run: dotnet nuget push ./*.nupkg --skip-duplicate --no-symbols true
+      run: dotnet nuget push ./*.nupkg --skip-duplicate --no-symbols true -Source https://www.nuget.org/api/v2/package
  
     - name: Upload Artifact
       uses: actions/upload-artifact@v1.0.0
