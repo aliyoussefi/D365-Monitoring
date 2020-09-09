@@ -13,7 +13,7 @@ jobs:
     - name: Dump GitHub context
       env:
         GITHUB_CONTEXT: ${{ toJson(github.event) }}
-        MILESTONE_NAME: ${{ github.event.title }}
+        MILESTONE_NAME: ${{ github.event.milestone.title }}
       run: echo "$MILESTONE_NAME"
 
     - uses: actions/checkout@v1
@@ -35,7 +35,7 @@ jobs:
       run: nuget pack nuspec\D365.Monitoring.nuspec  -prop configuration=debug -BasePath Dynamics365.Monitoring.Plugins\
  
     - name: Push generated package to GitHub registry
-      run: dotnet nuget push *.nupkg --skip-duplicate --no-symbols true --source https://api.nuget.org/v3/index.json -k NUGET_API_TOKEN
+      run: dotnet nuget push *.nupkg --skip-duplicate --no-symbols true --api-key NUGET_API_TOKEN --source https://api.nuget.org/v3/index.json 
  
     - name: Upload Artifact
       uses: actions/upload-artifact@v1.0.0
