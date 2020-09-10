@@ -41,9 +41,4 @@ jobs:
     - name: Push generated package to GitHub registry
       run: nuget push *.nupkg -ApiKey ${{ secrets.NUGET_API_TOKEN }} -Source https://api.nuget.org/v3/index.json 
 
-    - name: Upload Artifact
-      uses: actions/upload-artifact@v1.0.0
-      with:
-        name: published_webapp
-        path: bin\Release\Publish
 
