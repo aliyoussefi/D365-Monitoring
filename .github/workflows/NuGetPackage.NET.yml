@@ -34,7 +34,7 @@ jobs:
       run: msbuild Dynamics365.Monitoring.sln /p:Configuration=Release /p:DeployOnBuild=true /p:PublishProfile=FolderProfile
  
     - name: Pack .NET Assembly as nuspec package
-      run: nuget pack nuspec\D365.Monitoring.nuspec -Version $MILESTONE_NAME -prop configuration=debug -BasePath Dynamics365.Monitoring.Plugins\
+      run: nuget pack nuspec\D365.Monitoring.nuspec -Version 9.2.0.1 -prop configuration=debug -BasePath Dynamics365.Monitoring.Plugins\
  
     # - name: Push generated package to GitHub registry
     #   run: dotnet nuget push *.nupkg --skip-duplicate --no-symbols true --api-key NUGET_API_TOKEN --source https://api.nuget.org/v3/index.json 
