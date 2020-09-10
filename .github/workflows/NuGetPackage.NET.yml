@@ -39,7 +39,7 @@ jobs:
     # - name: Push generated package to GitHub registry
     #   run: dotnet nuget push *.nupkg --skip-duplicate --no-symbols true --api-key NUGET_API_TOKEN --source https://api.nuget.org/v3/index.json 
     - name: Push generated package to GitHub registry
-      run: nuget push *.nupkg -ApiKey NUGET_API_TOKEN -Source https://api.nuget.org/v3/index.json 
+      run: nuget push *.nupkg -ApiKey NUGET_API_TOKEN 
 
     - name: Upload Artifact
       uses: actions/upload-artifact@v1.0.0
