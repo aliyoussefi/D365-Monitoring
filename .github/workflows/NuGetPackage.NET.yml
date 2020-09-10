@@ -24,6 +24,8 @@ jobs:
        
     - name: Setup NuGet
       uses: NuGet/setup-nuget@v1.0.2
+      with:
+        nuget-version: '5.x'
      
     - name: Restore NuGet Packages
       run: nuget restore Dynamics365.Monitoring.sln
