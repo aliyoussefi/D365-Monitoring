@@ -42,8 +42,8 @@ jobs:
       env:
         RUNNER_CONTEXT: ${{ toJson(runner) }}
       run: echo "$RUNNER_CONTEXT"
-    - name: Dump tool_cache
-      run: dir $RUNNER_CONTEXT.tool_cache
+    - name: Dump workspace
+      run: dir $RUNNER_CONTEXT.workspace
     - name: Dump strategy context
       env:
         STRATEGY_CONTEXT: ${{ toJson(strategy) }}
