@@ -16,7 +16,8 @@ C:\Users\alyousse\source\repos\aliyoussefi\D365-Monitoring\Dynamics365.Monitorin
 C:\Users\alyousse\source\repos\aliyoussefi\D365-Monitoring\Dynamics365.Monitoring.Plugins\bin\Debug\Microsoft.Xrm.Sdk.dll
 C:\Users\alyousse\source\repos\aliyoussefi\D365-Monitoring\Dynamics365.Monitoring.Plugins\bin\Debug\Microsoft.Crm.Sdk.Proxy.xml
 C:\Users\alyousse\source\repos\aliyoussefi\D365-Monitoring\Dynamics365.Monitoring.Plugins\bin\Debug\Microsoft.Xrm.Sdk.xml
-C:\Users\alyousse\source\repos\aliyoussefi\D365-Monitoring\Dynamics365.Monitoring.Plugins\obj\Debug\Dynamics365.Monitoring.Plugins.csprojAssemblyReference.cache
+C:\Users\alyousse\source\repos\aliyoussefi\D365-Monitoring\Dynamics365.Monitoring.Plugins\obj\Debug\Dynamics365.Monitoring.Plugins.csproj.CoreCompileInputs.cache
 C:\Users\alyousse\source\repos\aliyoussefi\D365-Monitoring\Dynamics365.Monitoring.Plugins\obj\Debug\Dynamics365.Monitoring.Plugins.csproj.CopyComplete
 C:\Users\alyousse\source\repos\aliyoussefi\D365-Monitoring\Dynamics365.Monitoring.Plugins\obj\Debug\Dynamics365.Monitoring.Plugins.dll
 C:\Users\alyousse\source\repos\aliyoussefi\D365-Monitoring\Dynamics365.Monitoring.Plugins\obj\Debug\Dynamics365.Monitoring.Plugins.pdb
+C:\Users\alyousse\source\repos\aliyoussefi\D365-Monitoring\Dynamics365.Monitoring.Plugins\obj\Debug\Dynamics365.Monitoring.Plugins.csproj.AssemblyReference.cache

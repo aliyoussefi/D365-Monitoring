@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xrm.Sdk;
+using Microsoft.Xrm.Sdk.PluginTelemetry;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -43,26 +44,38 @@ namespace Dynamics365.Monitoring.Plugins {
             //When you use the Update method or UpdateRequest message, do not set the OwnerId attribute on a record unless the owner has actually changed.
             //When you set this attribute, the changes often cascade to related entities, which increases the time that is required for the update operation.
             //Extract the tracing service for use in debugging sandboxed plug-ins.
+            ILogger logger = (ILogger)serviceProvider.GetService(typeof(ILogger));
+            logger.LogInformation("Creating ITracingService");
             ITracingService tracingService =
                 (ITracingService)serviceProvider.GetService(typeof(ITracingService));
+            logger.LogInformation("Created ITracingService", tracingService);
             tracingService.Trace("Starting SendApplicationInsights at " + DateTime.Now.ToString());
             // Obtain the execution context from the service provider.
             IPluginExecutionContext context = (IPluginExecutionContext)
                 serviceProvider.GetService(typeof(IPluginExecutionContext));
+            logger.LogInformation("Created IPluginExecutionContext", context);
             XmlDocument doc = new XmlDocument();
             doc.LoadXml(_unsecureString);
             _instrumentationKey = GetValueNode(doc, "instrumentationKey");
+            
+            //logger.LogInformation("Log Information");
+            //logger.LogWarning("Log Warning");
+            //logger.LogTrace("Log Trace");
+            //logger.LogCritical("Log Critical");
+            //logger.LogDebug("Log Debug");
+            //logger.LogError("Log Error");
+            //logger.LogMetric("Log Metric", 10000);
             try
             {
                 //Do Sleepy Thread
-                SendRequest(BaseType.EventData, context);
+                SendRequest(BaseType.EventData, context, logger);
                 if (context.MessageName == "Create") {
                     Thread.Sleep(3000);
-                    SendRequest(BaseType.EventData, context);
+                    SendRequest(BaseType.EventData, context, logger);
                 }
 
                 //Do Exception Tracking
-                SendRequest(BaseType.ExceptionData, context);
+                SendRequest(BaseType.ExceptionData, context, logger);
                 //Do Parallel Tracking
                 HttpWebRequest rtnObject =
                   (HttpWebRequest)WebRequest.Create(@"https://dynamics365andazurefunction.azurewebsites.net/api/ReturnObject?PluginCorrelationId="+ context.CorrelationId);
@@ -74,11 +87,11 @@ namespace Dynamics365.Monitoring.Plugins {
                 rtnObject.Method = "GET";
                 HttpWebResponse myHttpWebResponse1 =
                   (HttpWebResponse)rtnObject.GetResponse();
-
+                logger.LogInformation("Log Request to https://dynamics365andazurefunction.azurewebsites.net/api/ReturnObject?PluginCorrelationId=", rtnObject);
             }
             catch (Exception ex)
             {
-
+                logger.LogError(ex, ex.Message);
                 throw new InvalidPluginExecutionException(ex.Message);
             }
 
@@ -130,7 +143,7 @@ namespace Dynamics365.Monitoring.Plugins {
             return data;
         }
 
-        public void SendRequest(BaseType messageType, IPluginExecutionContext context) {
+        public void SendRequest(BaseType messageType, IPluginExecutionContext context, ILogger logger) {
             //PostBody message = new PostBody();
             //message.data = new DataModel();
             //message.data.baseData = 
@@ -209,12 +222,14 @@ namespace Dynamics365.Monitoring.Plugins {
                 StreamReader sr = new StreamReader(stream1);
                 HttpResponseMessage response = client.PostAsync(requestUri, new StringContent(sr.ReadToEnd(), Encoding.UTF8, "application/json")).Result;
                 string result = response.Content.ReadAsStringAsync().Result;
-
+                logger.LogInformation("Send message to Application Insights", result);
                 if (response.IsSuccessStatusCode) {
                     Console.WriteLine("Request success: ");
+
                 }
                 else {
                     Console.WriteLine("Request fail, please check the detailed error: ");
+                    logger.LogWarning("Send message to Application Insights failed", result);
                 }
                 Console.WriteLine(result);
 

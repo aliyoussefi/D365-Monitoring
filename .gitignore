@@ -259,3 +259,6 @@ paket-files/
 # Python Tools for Visual Studio (PTVS)
 __pycache__/
 *.pyc
+/D365-Monitoring/db-javascript
+/D365-Monitoring/src.zip
+/D365-Monitoring/codeql-database.yml

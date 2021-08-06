@@ -4,15 +4,14 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{DF9F0213-6C0F-41C3-9C35-5078301EDFD0}</ProjectGuid>
+    <ProjectGuid>{6C4D556E-1E23-4267-8453-BBEEEDB80786}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Dynamics365.Monitoring.Plugins</RootNamespace>
-    <AssemblyName>Dynamics365.Monitoring.Plugins</AssemblyName>
-    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <RootNamespace>Dynamics365.Monitoring.Scenarios</RootNamespace>
+    <AssemblyName>Dynamics365.Monitoring.Scenarios</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -35,17 +34,14 @@
     <SignAssembly>true</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyOriginatorKeyFile>1.0.2.0.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>1.0.0.0.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Crm.Sdk.Proxy, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.CrmSdk.CoreAssemblies.9.0.2.32\lib\net462\Microsoft.Crm.Sdk.Proxy.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.IdentityModel, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.IdentityModel.6.1.7600.16394\lib\net35\Microsoft.IdentityModel.dll</HintPath>
+      <HintPath>..\packages\Microsoft.CrmSdk.CoreAssemblies.9.0.2.33\lib\net462\Microsoft.Crm.Sdk.Proxy.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Xrm.Sdk, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.CrmSdk.CoreAssemblies.9.0.2.32\lib\net462\Microsoft.Xrm.Sdk.dll</HintPath>
+      <HintPath>..\packages\Microsoft.CrmSdk.CoreAssemblies.9.0.2.33\lib\net462\Microsoft.Xrm.Sdk.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -65,23 +61,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DoNotAllowBookingAtSameTime.cs" />
-    <Compile Include="ApplicationInsightsPostCreate.cs" />
-    <Compile Include="ApplicationInsightsTrackCustomEvent.cs" />
-    <Compile Include="ApplicationInsightsTrackException.cs" />
-    <Compile Include="ApplicationInsightsTrackMetric.cs" />
-    <Compile Include="Contracts\ApplicationInsightsContracts.cs" />
-    <Compile Include="Models\PluginContextToApplicationInsightContracts.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="PushMessageToApplicationInsights.cs" />
-    <Compile Include="ResourceLock.cs" />
-    <Compile Include="ILoggerExample.cs" />
-    <Compile Include="SleepyPlugin.cs" />
+    <Compile Include="ResourceLockPlugin.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="1.0.2.0.snk" />
-    <None Include="Dynamics365.Monitoring.Plugins.Key.snk" />
-    <None Include="new.snk" />
+    <None Include="1.0.0.0.snk" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

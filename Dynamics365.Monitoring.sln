@@ -24,6 +24,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NewFolder1", "NewFolder1", 
 		DevOps.Build.StorageQueue.FailedBuildExample.json = DevOps.Build.StorageQueue.FailedBuildExample.json
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dynamics365.Monitoring.Scenarios", "Dynamics365.Monitoring.Scenarios\Dynamics365.Monitoring.Scenarios.csproj", "{6C4D556E-1E23-4267-8453-BBEEEDB80786}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -46,6 +48,10 @@ Global
 		{08B5C21D-8C87-439C-BD18-0EBC5D4A8BC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{08B5C21D-8C87-439C-BD18-0EBC5D4A8BC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{08B5C21D-8C87-439C-BD18-0EBC5D4A8BC7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C4D556E-1E23-4267-8453-BBEEEDB80786}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C4D556E-1E23-4267-8453-BBEEEDB80786}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C4D556E-1E23-4267-8453-BBEEEDB80786}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C4D556E-1E23-4267-8453-BBEEEDB80786}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

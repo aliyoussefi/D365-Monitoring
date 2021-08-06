@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 
+
 namespace Dynamics365.Monitoring.Plugins
 {
     public class ApplicationInsightsTrackCustomEvent : IPlugin
@@ -49,6 +50,9 @@ namespace Dynamics365.Monitoring.Plugins
             // Obtain the execution context from the service provider.
             IPluginExecutionContext context = (IPluginExecutionContext)
                 serviceProvider.GetService(typeof(IPluginExecutionContext));
+
+            Microsoft.Xrm.Sdk.PluginTelemetry.ILogger logger = (Microsoft.Xrm.Sdk.PluginTelemetry.ILogger)
+                serviceProvider.GetService(typeof(Microsoft.Xrm.Sdk.PluginTelemetry.ILogger));
             XmlDocument doc = new XmlDocument();
             DateTime executionTime = DateTime.Now.ToUniversalTime();
             tracingService.Trace("Parse and Search Unsecure Config at " + DateTime.Now.ToString());
@@ -56,17 +60,24 @@ namespace Dynamics365.Monitoring.Plugins
             _instrumentationKey = GetValueNode(doc, "instrumentationKey");
             PostBody postBody = new PostBody() { iKey = _instrumentationKey };
             try {
+                logger.IsEnabled(Microsoft.Xrm.Sdk.PluginTelemetry.LogLevel.Information);
+                logger.LogInformation("test from ILogger");
+                logger.LogTrace("Log Trace");
+                logger.LogWarning("Log Trace");
+                //logger.LogMetric("testMetric", new long());
+                logger.LogError("Log Trace");
+                logger.LogCritical("Log Trace");
                 tracingService.Trace("Create Custom Event Data DTO at " + DateTime.Now.ToString());
                 postBody.data.baseData = Events.CreateCustomEventData(postBody.data.baseData, context);
                 postBody.data.baseData.properties.Add("ExecutionTime", executionTime.ToString());
                 tracingService.Trace("Send Custom Event Request at " + DateTime.Now.ToString());
                 PushMessageToApplicationInsights messenger = new PushMessageToApplicationInsights();
-                messenger.SendRequest(postBody, tracingService);
+                messenger.SendRequest(postBody, tracingService, logger);
             }
             catch (InvalidPluginExecutionException ex) {
                 postBody.data.baseData = Exceptions.CreateExceptionEventData(postBody.data.baseData, ex, context);
                 PushMessageToApplicationInsights messenger = new PushMessageToApplicationInsights();
-                messenger.SendRequest(postBody, tracingService);
+                messenger.SendRequest(postBody, tracingService, logger);
                 throw new InvalidPluginExecutionException(ex.Message);
             }
 

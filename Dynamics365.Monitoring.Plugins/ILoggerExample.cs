@@ -8,7 +8,7 @@ using System.Threading;
 using System.Threading.Tasks;
 
 namespace Dynamics365.Monitoring.Plugins {
-    public class SleepyPlugin : IPlugin {
+    public class ILoggerExample : IPlugin {
         public class TestObject
         {
             public string TestProperty { get; set; }
@@ -20,9 +20,14 @@ namespace Dynamics365.Monitoring.Plugins {
             //Extract the tracing service for use in debugging sandboxed plug-ins.
             ITracingService tracingService =
                 (ITracingService)serviceProvider.GetService(typeof(ITracingService));
+            tracingService.Trace("Starting ILoggerExample at " + DateTime.Now.ToString());
             TestObject testObject = new TestObject();
             testObject.TestProperty = "Demo on " + DateTime.Now.ToString();
             ILogger logger = (ILogger)serviceProvider.GetService(typeof(ILogger));
+            // Obtain the execution context from the service provider.
+            IPluginExecutionContext context = (IPluginExecutionContext)
+                serviceProvider.GetService(typeof(IPluginExecutionContext));
+            logger.BeginScope(context.CorrelationId.ToString());
             logger.LogInformation("Log Information", testObject);
             logger.LogWarning("Log Warning");
             logger.LogTrace("Log Trace");
@@ -30,13 +35,19 @@ namespace Dynamics365.Monitoring.Plugins {
             logger.LogDebug("Log Debug");
             logger.LogError("Log Error");
             logger.LogMetric("Log Metric", 10000);
-            
-            tracingService.Trace("Starting SendApplicationInsights at " + DateTime.Now.ToString());
-            // Obtain the execution context from the service provider.
-            IPluginExecutionContext context = (IPluginExecutionContext)
-                serviceProvider.GetService(typeof(IPluginExecutionContext));
 
-            Thread.Sleep(180000);
+            logger.BeginScope(new Dictionary<string, object> { ["OrderId"] = 54 });
+            //Thread.Sleep(100);
+            logger.LogWarning("The person {PersonId} could not be found.", 1);
+
+
+            logger.AddCustomProperty("CorrelationId", context.CorrelationId.ToString());
+            logger.AddCustomProperty("PrimaryEntityId", context.PrimaryEntityId.ToString());
+            logger.Log(LogLevel.Information, "LogLevel Information Example");
+            
+            logger.LogInformation("Within Scope");
+            
+            
         }
     }
 }
