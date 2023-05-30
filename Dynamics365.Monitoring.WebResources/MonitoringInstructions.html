@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="../../ClientGlobalContext.js.aspx" type="text/javascript"></script>
+    <script type="text/javascript">
+
+        document.onreadystatechange = function () {
+            if (document.readyState == "complete") {
+                getDataParam();
+            }
+        }
+
+        function getDataParam() {
+            var instruction = document.getElementById("instructions");
+            instruction.innerHTML += "<br>The session is: " + parent.window.CURRENT_SESSION_ID;
+            instruction.innerHTML += "<br>To capture Activity IDs, which will help with Application Insight query, open Developer Tools and open the Network tab.";
+            instruction.innerHTML += "<a href='https://learn.microsoft.com/en-us/microsoft-edge/devtools-guide-chromium/network/' target='_blank'>Network Tab Example</a><p>";
+            switch (parent.Xrm.Page.data.entity.getEntityName()) {
+                case "ali_monitoringsdk":
+                    instruction.innerHTML += "<br>In this scenario, we are adding the Application Insights SDK as a webresource.";
+                    instruction.innerHTML += "<br>This example allows you to add additional events and message context to supplement Application Insights out of the box.";
+                    instruction.innerHTML += "<br>Examples include: Adding custom metrics for page performance, collecting OS and Device Type or Dataverse context not sent by default.";
+                    break;
+                case "ali_monitoringperformance":
+                    instruction.innerHTML += "<br>In this scenario, we are simulating a slow load and save that a user may experience.";
+                    instruction.innerHTML += "<br>The session is: " + window.CURRENT_SESSION_ID;
+                    var resources = window.performance.getEntriesByType('resource');
+
+                    resources.forEach(function (elem, index) {
+                        instruction.innerHTML += "<br>Name: " + elem.name & " : " + elem.entryType & " : " + elem.duration;
+                    });
+                    instruction.innerHTML += "<br>Examples include: Adding custom metrics for page performance, collecting OS and Device Type or Dataverse context not sent by default.";
+                    instruction.innerHTML += "<br>This example simulates a slow post operation retrieve plug-in. Look for a <b>dependency</b> record with a duration of over 50 seconds (this may be changed).;
+            instruction.innerHTML += "<br>A good indictator is the Time to First Byte (ttfb) in the custom dimensions. This should extremely bigger than other ootb dependecy calls.;
+                    break;
+                case "ali_monitoringintegration":
+            instruction.innerHTML += "<br>In this scenario, we are sending a XmlHttpRequest to the Dataverse Web API.";
+            instruction.innerHTML += "<br>This example allows you to see dependencies and requests related to a page view.";
+                    break;
+                case "ali_monitoringexceptions":
+            instruction.innerHTML += "<br>In this scenario, we are throwing an exception in a webresource.";
+            instruction.innerHTML += "<br>This example allows you to review ClientErrors in Dynamics 365.";
+                    break;
+
+            }
+
+
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Monitoring Instructions</h1>
+        <p id="instructions"></p>
+    </div>
+</body>
+</html>

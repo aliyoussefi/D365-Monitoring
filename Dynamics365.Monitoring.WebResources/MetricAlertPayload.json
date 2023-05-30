@@ -1,0 +1,46 @@
+{
+  "schemaId": "azureMonitorCommonAlertSchema",
+  "data": {
+    "essentials": {
+      "alertId": "/subscriptions/527e910a-287d-42a6-af7d-995051d65bef/providers/Microsoft.AlertsManagement/alerts/54badcae-6737-4fd2-a3cd-c1b0ed09455e",
+      "alertRule": "Monitoring Performance Alert - Workshop Demo",
+      "severity": "Sev3",
+      "signalType": "Metric",
+      "monitorCondition": "Fired",
+      "monitoringService": "Platform",
+      "alertTargetIDs": [
+        "/subscriptions/527e910a-287d-42a6-af7d-995051d65bef/resourcegroups/d365-telemetry/providers/microsoft.insights/components/d365-telemetry-insights"
+      ],
+      "configurationItems": [
+        "d365-telemetry-insights"
+      ],
+      "originAlertId": "527e910a-287d-42a6-af7d-995051d65bef_D365-Telemetry_microsoft.insights_metricAlerts_Monitoring Performance Alert - Workshop Demo_1714444453",
+      "firedDateTime": "2023-05-19T15:03:29.0494Z",
+      "description": "",
+      "essentialsVersion": "1.0",
+      "alertContextVersion": "1.0"
+    },
+    "alertContext": {
+      "properties": null,
+      "conditionType": "SingleResourceMultipleMetricCriteria",
+      "condition": {
+        "windowSize": "PT5M",
+        "allOf": [
+          {
+            "metricName": "dependencies/duration",
+            "metricNamespace": "microsoft.insights/components",
+            "operator": "GreaterThan",
+            "threshold": "50000",
+            "timeAggregation": "Maximum",
+            "dimensions": [],
+            "metricValue": 50992,
+            "webTestName": null
+          }
+        ],
+        "windowStartTime": "2023-05-19T14:55:19.89Z",
+        "windowEndTime": "2023-05-19T15:00:19.89Z"
+      }
+    },
+    "customProperties": null
+  }
+}

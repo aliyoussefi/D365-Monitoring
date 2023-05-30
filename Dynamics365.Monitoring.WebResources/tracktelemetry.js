@@ -1,8 +1,72 @@
-﻿/*================================================================================================================================
-This Sample Code is provided for the purpose of illustration only and is not intended to be used in a production environment.
-THIS SAMPLE CODE AND ANY RELATED INFORMATION ARE PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
-We grant You a nonexclusive, royalty-free right to use and modify the Sample Code and to reproduce and distribute the object code form of the Sample Code, provided that You agree: (i) to not use Our name, logo, or trademarks to market Your software product in which the Sample Code is embedded; (ii) to include a valid copyright notice on Your software product in which the Sample Code is embedded; and (iii) to indemnify, hold harmless, and defend Us and Our suppliers from and against any claims or lawsuits, including attorneys fees, that arise or result from the use or distribution of the Sample Code.
-=================================================================================================================================*/
+﻿//Application Insights Demo Helper Methods==========================================================================================
+function test(context) {
+    alert('Hello World');
+}
+function captureTelemetry(formContext) {
+    var globalContext = Xrm.Utility.getGlobalContext();
+    var organizationSettings = Xrm.Utility.getGlobalContext().organizationSettings;
+    var userSettings = Xrm.Utility.getGlobalContext().userSettings;
+    //var appInsightsKey = RetrieveInstrumentationKeyEnvironmentVariable("pfe_InstrumentationKey")
+    var insights = asyncRetrieveInstrumentationKeyEnvironmentVariable("pfe_InstrumentationKey")
+        .then(function (res) {
+            var appInsights = window.appInsights || function (config) {
+                function i(config) {
+                    t[config] = function () {
+                        var i = arguments; t.queue.push(function () { t[config].apply(t, i) })
+                    }
+                }
+                var t = { config: config }, u = document, e = window, o = "script", s = "AuthenticatedUserContext", h = "start", c = "stop", l = "Track", a = l + "Event", v = l + "Page", y = u.createElement(o), r, f;
+                y.src = config.url || "https://az416426.vo.msecnd.net/scripts/a/ai.0.js";
+                u.getElementsByTagName(o)[0].parentNode.appendChild(y);
+                try { t.cookie = u.cookie } catch (p) { }
+                for (t.queue = [], t.version = "1.0", r = ["Event", "Exception", "Metric", "PageView", "Trace", "Dependency"]; r.length;)
+                    i("track" + r.pop());
+                return i("set" + s), i("clear" + s), i(h + a), i(c + a), i(h + v), i(c + v), i("flush"), config.disableExceptionTracking || (r = "onerror", i("_" + r), f = e[r], e[r] = function (config, i, u, e, o) {
+                    var s = f && f(config, i, u, e, o);
+                    return s !== !0 && t["_" + r](config, i, u, e, o), s
+                }), t
+            }({
+                instrumentationKey: res,
+                disableTelemetry: false,
+                application: { ver: "2.9" },
+                isBrowserLinkTrackingEnabled: true,
+                //autoTrackPageView will write to customMetrics
+                autoTrackPageVisitTime: true,
+                disableAjaxTracking: false
+                //verboseLogging: true,
+                //enableDebug: true
+            });
+            //var envelope = new Microsoft.Telemetry.Envelope;
+            appInsights.tags = {};
+            appInsights.tags["ai.cloud.role"] = "Contoso.AI.SDK";
+            //https://github.com/microsoft/ApplicationInsights-JS/issues/1302
+            appInsights.tags["ai.session.id"] = parent.window.CURRENT_SESSION_ID;
+            appInsights.tags["ai.user.id"] = userSettings.userId;
+            appInsights.tags["ai.application.version"] = globalContext.getVersion()
+            window.appInsights = appInsights;
+        });
+}
+
+async function asyncRetrieveInstrumentationKeyEnvironmentVariable(variableName) {
+    let response = await RetrieveEnvironmentVariableDefinition(variableName);
+    //.then(RetrieveEnvironmentVariable);
+    return await RetrieveEnvironmentVariable(response);
+}
+
+var RetrieveInstrumentationKeyEnvironmentVariable = function (variableName) {
+
+    return RetrieveEnvironmentVariableDefinition(variableName)
+        .then(RetrieveEnvironmentVariable);
+
+
+    //return instrumentationkey;
+};
+
+function Demo_SlowPerformance_LoadForm() {
+    console.log("Hello");
+    setTimeout(() => { console.log("World!"); }, 10000);
+}
+
 var clientType;
 var dimensions;
 //Form registered methods==========================================================================================================
@@ -20,18 +84,18 @@ function uploadResourceTimings(formContext) {
         var organizationId = organizationSettings.organizationId;
 
         dimensions = {
-         ["userName"]: userName,
-         ["userId"]: userSettings.userId,
-         ["organizationId"]: organizationId,
-         ["client"]: clientContext.getClient(),
-         ["uniqueName"]: organizationSettings.uniqueName,
-         ["clientState"]: clientContext.getClientState(),
-         ["formFactor"]: clientContext.getFormFactor(),
-         ["isOffline"]: clientContext.isOffline(),
-         ["clientUrl"]: globalContext.getClientUrl(),
-         ["version"]:   globalContext.getVersion(),
-         ["baseCurrencyId"]: organizationSettings.baseCurrencyId,
-         ["defaultCountryCode"]: organizationSettings.defaultCountryCode,
+            ["userName"]: userName,
+            ["userId"]: userSettings.userId,
+            ["organizationId"]: organizationId,
+            ["client"]: clientContext.getClient(),
+            ["uniqueName"]: organizationSettings.uniqueName,
+            ["clientState"]: clientContext.getClientState(),
+            ["formFactor"]: clientContext.getFormFactor(),
+            ["isOffline"]: clientContext.isOffline(),
+            ["clientUrl"]: globalContext.getClientUrl(),
+            ["version"]: globalContext.getVersion(),
+            ["baseCurrencyId"]: organizationSettings.baseCurrencyId,
+            ["defaultCountryCode"]: organizationSettings.defaultCountryCode,
             ["isAutoSaveEnabled"]: organizationSettings.isAutoSaveEnabled,
             ["languageId"]: organizationSettings.languageId
         };
@@ -82,11 +146,11 @@ function uploadResourceTimings(formContext) {
             ["RedirectCount"]: RedirectCount,
             ["navigationType"]: navigationType,
         };
-        
+
         //Perform WebAPI Requests
         RetrieveEntity('accounts');
         //This will ping for App Insights context and write a create method.
-        pingForAppInsightsContext(); 
+        pingForAppInsightsContext();
 
         if (clientType !== "Mobile") {
             var resources = window.performance.getEntriesByType('resource');
@@ -100,7 +164,7 @@ function uploadResourceTimings(formContext) {
 
     }
     catch (exception) {
-        appInsights.trackException(exception, null, null,null);
+        appInsights.trackException(exception, null, null, null);
     }
 }
 
@@ -109,99 +173,99 @@ function testApplicationInsights(formContext) {
 
     try {
         //DEMO: trackTrace
-            appInsights.trackTrace("Begin " + "testApplicationInsights");
-            //XRM Variables******************************************************
-            appInsights.trackTrace("Begin " + "formContext variable");
-            var globalContext = Xrm.Utility.getGlobalContext();
-            var formAttributes = formContext.getFormContext().data.entity.attributes;
-            var organizationSettings = Xrm.Utility.getGlobalContext().organizationSettings;
-            var userSettings = Xrm.Utility.getGlobalContext().userSettings;
-            var clientContext = Xrm.Utility.getGlobalContext().client;
+        appInsights.trackTrace("Begin " + "testApplicationInsights");
+        //XRM Variables******************************************************
+        appInsights.trackTrace("Begin " + "formContext variable");
+        var globalContext = Xrm.Utility.getGlobalContext();
+        var formAttributes = formContext.getFormContext().data.entity.attributes;
+        var organizationSettings = Xrm.Utility.getGlobalContext().organizationSettings;
+        var userSettings = Xrm.Utility.getGlobalContext().userSettings;
+        var clientContext = Xrm.Utility.getGlobalContext().client;
 
-            var userName = userSettings.userName;
-            var organizationId = organizationSettings.organizationId;
+        var userName = userSettings.userName;
+        var organizationId = organizationSettings.organizationId;
 
         dimensions = {
-             ["source"]:"WebResource",
-             ["userName"]: userName,
-             ["userId"]: userSettings.userId,
-             ["organizationId"]: organizationId,
-             ["client"]: clientContext.getClient(),
-             ["uniqueName"]: organizationSettings.uniqueName,
-             ["clientState"]: clientContext.getClientState(),
-             ["formFactor"]: clientContext.getFormFactor(),
-             ["isOffline"]: clientContext.isOffline(),
+            ["source"]: "WebResource",
+            ["userName"]: userName,
+            ["userId"]: userSettings.userId,
+            ["organizationId"]: organizationId,
+            ["client"]: clientContext.getClient(),
+            ["uniqueName"]: organizationSettings.uniqueName,
+            ["clientState"]: clientContext.getClientState(),
+            ["formFactor"]: clientContext.getFormFactor(),
+            ["isOffline"]: clientContext.isOffline(),
             ["clientUrl"]: globalContext.getClientUrl(),
             ["currentAppUrl"]: globalContext.getCurrentAppUrl(),
-             ["version"]: globalContext.getVersion(),
-             ["baseCurrencyId"]: organizationSettings.baseCurrencyId,
-             ["defaultCountryCode"]: organizationSettings.defaultCountryCode,
-             ["isAutoSaveEnabled"]: organizationSettings.isAutoSaveEnabled,
-             ["languageId"]: organizationSettings.languageId
+            ["version"]: globalContext.getVersion(),
+            ["baseCurrencyId"]: organizationSettings.baseCurrencyId,
+            ["defaultCountryCode"]: organizationSettings.defaultCountryCode,
+            ["isAutoSaveEnabled"]: organizationSettings.isAutoSaveEnabled,
+            ["languageId"]: organizationSettings.languageId
         };
 
         globalContext.getCurrentAppName().then(successCallBackCustomEventPush, errorCallBackCustomEventPush);
         globalContext.getCurrentAppProperties().then(successCallBackAppPropertiesCustomEventPush, errorCallBackCustomEventPush);
 
-            appInsights.trackTrace("End " + "formContext variable");
-            //XRM Variables******************************************************
+        appInsights.trackTrace("End " + "formContext variable");
+        //XRM Variables******************************************************
         //END DEMO: trackTrace
 
         //DEMO: customEvent===================================================
-            appInsights.trackTrace("Begin " + "DEMO: customEvent");
-            testTrackCustomEvent();
-            appInsights.trackTrace("End " + "DEMO: customEvent");
+        appInsights.trackTrace("Begin " + "DEMO: customEvent");
+        testTrackCustomEvent();
+        appInsights.trackTrace("End " + "DEMO: customEvent");
         //END DEMO: customEvent================================================
 
         //DEMO: pageViews===================================================
-            appInsights.trackTrace("Begin DEMO: " + "pageViews");
-            //This will demo pageViews, which is set by default but not reliable. Instead we can use navigation timings.
-            //Also we call startTrackPage and stopTrackPage
-            //Key metrics
-            var fetchStart = window.performance.timing.fetchStart;
-            var loadEventEnd = window.performance.timing.loadEventEnd;
+        appInsights.trackTrace("Begin DEMO: " + "pageViews");
+        //This will demo pageViews, which is set by default but not reliable. Instead we can use navigation timings.
+        //Also we call startTrackPage and stopTrackPage
+        //Key metrics
+        var fetchStart = window.performance.timing.fetchStart;
+        var loadEventEnd = window.performance.timing.loadEventEnd;
 
-            var navigationStart = window.performance.timing.navigationStart;
-            var firstByte = window.performance.timing.responseStart;
-            var domReady = window.performance.timing.domContentLoadedEventEnd;
-            var pageReady = window.performance.timing.loadEventEnd;
+        var navigationStart = window.performance.timing.navigationStart;
+        var firstByte = window.performance.timing.responseStart;
+        var domReady = window.performance.timing.domContentLoadedEventEnd;
+        var pageReady = window.performance.timing.loadEventEnd;
 
-            var DomContentLoadTime = window.performance.timing.domComplete - window.performance.timing.domInteractive;
-            var DomParsingTime = window.performance.timing.domInteractive - window.performance.timing.domLoading;
-            var RequestResponseTime = window.performance.timing.responseEnd - window.performance.timing.requestStart;
-            var PageRenderTime = window.performance.timing.domComplete - window.performance.timing.domLoading;
-            var NetworkLatency = window.performance.timing.responseEnd - window.performance.timing.fetchStart;
-            var RedirectTime = window.performance.timing.redirectEnd - window.performance.timing.redirectStart;
-            var RedirectCount = window.performance.navigation.redirectCount;
-            var navigationType = window.performance.navigation.type;
-            var measurements = {
-                ["fetchStart"]: fetchStart,
-                ["loadEventEnd"]: loadEventEnd,
-                ["navigationStart"]: navigationStart,
-                ["DomContentLoadTime"]: DomContentLoadTime,
-                ["DomParsingTime"]: DomParsingTime,
-                ["RequestResponseTime"]: RequestResponseTime,
-                ["PageRenderTime"]: PageRenderTime,
-                ["NetworkLatency"]: NetworkLatency,
-                ["RedirectTime"]: RedirectTime,
-                ["RedirectCount"]: RedirectCount,
-                ["NavigationType"]: navigationType
-            };
+        var DomContentLoadTime = window.performance.timing.domComplete - window.performance.timing.domInteractive;
+        var DomParsingTime = window.performance.timing.domInteractive - window.performance.timing.domLoading;
+        var RequestResponseTime = window.performance.timing.responseEnd - window.performance.timing.requestStart;
+        var PageRenderTime = window.performance.timing.domComplete - window.performance.timing.domLoading;
+        var NetworkLatency = window.performance.timing.responseEnd - window.performance.timing.fetchStart;
+        var RedirectTime = window.performance.timing.redirectEnd - window.performance.timing.redirectStart;
+        var RedirectCount = window.performance.navigation.redirectCount;
+        var navigationType = window.performance.navigation.type;
+        var measurements = {
+            ["fetchStart"]: fetchStart,
+            ["loadEventEnd"]: loadEventEnd,
+            ["navigationStart"]: navigationStart,
+            ["DomContentLoadTime"]: DomContentLoadTime,
+            ["DomParsingTime"]: DomParsingTime,
+            ["RequestResponseTime"]: RequestResponseTime,
+            ["PageRenderTime"]: PageRenderTime,
+            ["NetworkLatency"]: NetworkLatency,
+            ["RedirectTime"]: RedirectTime,
+            ["RedirectCount"]: RedirectCount,
+            ["NavigationType"]: navigationType
+        };
         appInsights.trackPageView(name, window.location.href, dimensions, measurements, pageReady - navigationStart);
-        
-            appInsights.trackTrace("End DEMO: " + "pageViews");
+
+        appInsights.trackTrace("End DEMO: " + "pageViews");
         //END DEMO: pageViews===============================================
 
         //DEMO: exceptions===================================================
-            appInsights.trackTrace("Begin DEMO: " + "exceptions");
-            testTrackException();
-            appInsights.trackTrace("End DEMO: " + "exceptions");
+        appInsights.trackTrace("Begin DEMO: " + "exceptions");
+        testTrackException();
+        appInsights.trackTrace("End DEMO: " + "exceptions");
         //END DEMO: exceptions===============================================
 
         //DEMO: customMetrics===================================================
-            appInsights.trackTrace("Begin DEMO: " + "customMetrics");
-            testTrackCustomMetric();
-            appInsights.trackTrace("End DEMO: " + "customMetrics");
+        appInsights.trackTrace("Begin DEMO: " + "customMetrics");
+        testTrackCustomMetric();
+        appInsights.trackTrace("End DEMO: " + "customMetrics");
         //END DEMO: customMetrics===============================================
 
 
@@ -219,7 +283,7 @@ function successCallBackCustomEventPush(result) {
 
 
     };
-    appInsights.trackEvent("UCI Demo", dimensions, null);
+    appInsights.trackEvent("Gilles Demo", dimensions, null);
 }
 
 function successCallBackAppPropertiesCustomEventPush(result) {
@@ -233,48 +297,15 @@ function successCallBackAppPropertiesCustomEventPush(result) {
 
 
     };
-    appInsights.trackEvent("UCI Demo", dimensions, null);
+    appInsights.trackEvent("Gilles Demo", dimensions, null);
 }
 
 function errorCallBackCustomEventPush(result) {
-    var dimensions = { [""]: "" };
-    appInsights.trackEvent("UCI Demo", dimensions, null);
+
 }
 //Form and Execution Context Helper Methods========================================================================================
 
-//Application Insights Demo Helper Methods==========================================================================================
-function captureTelemetry(formContext) {
-    var cat = localStorage.getItem('appInsights');
-    var appInsights = window.appInsights || function (config) {
-        function i(config) {
-            t[config] = function () {
-                var i = arguments; t.queue.push(function () { t[config].apply(t, i) })
-            }
-        }
-        var t = { config: config }, u = document, e = window, o = "script", s = "AuthenticatedUserContext", h = "start", c = "stop", l = "Track", a = l + "Event", v = l + "Page", y = u.createElement(o), r, f;
-        y.src = config.url || "https://az416426.vo.msecnd.net/scripts/a/ai.0.js";
-        u.getElementsByTagName(o)[0].parentNode.appendChild(y);
-        try { t.cookie = u.cookie } catch (p) { }
-        for (t.queue = [], t.version = "1.0", r = ["Event", "Exception", "Metric", "PageView", "Trace", "Dependency"]; r.length;)
-            i("track" + r.pop());
-        return i("set" + s), i("clear" + s), i(h + a), i(c + a), i(h + v), i(c + v), i("flush"), config.disableExceptionTracking || (r = "onerror", i("_" + r), f = e[r], e[r] = function (config, i, u, e, o) {
-            var s = f && f(config, i, u, e, o);
-            return s !== !0 && t["_" + r](config, i, u, e, o), s
-        }), t
-    }({
-        instrumentationKey: "",
-        disableTelemetry: false,
-        application: { ver: "2.9" },
-        isBrowserLinkTrackingEnabled: true,
-        //autoTrackPageView will write to customMetrics
-        autoTrackPageVisitTime: true,
-        disableAjaxTracking: false
-        //verboseLogging: true,
-        //enableDebug: true
-    });
-    window.appInsights = appInsights;
 
-}
 
 function testTrackAvailabilityResults() {
     appInsights.trackTrace("Begin testTrackAvailabilityResults");
@@ -288,7 +319,7 @@ function testTrackAvailabilityResults() {
                 function success(location) {
                     Xrm.Navigation.openAlertDialog({
                         text: "Latitude: " + location.coords.latitude +
-                        ", Longitude: " + location.coords.longitude
+                            ", Longitude: " + location.coords.longitude
                     });
                 },
                 function (error) {
@@ -371,21 +402,21 @@ function trackAttributeChange(formContext) {
     var organizationId = organizationSettings.organizationId;
 
     dimensions = {
-     ["Source"]: "WebResource",
-     ["userName"]: userName,
-     ["userId"]: userSettings.userId,
-     ["organizationId"]: organizationId,
-     ["client"]: clientContext.getClient(),
-     ["uniqueName"]: organizationSettings.uniqueName,
-     ["clientState"]: clientContext.getClientState(),
-     ["formFactor"]: clientContext.getFormFactor(),
-     ["isOffline"]: clientContext.isOffline(),
-     ["clientUrl"]: globalContext.getClientUrl(),
-     ["version"]: globalContext.getVersion(),
-     ["baseCurrencyId"]: organizationSettings.baseCurrencyId,
-     ["defaultCountryCode"]: organizationSettings.defaultCountryCode,
-     ["isAutoSaveEnabled"]: organizationSettings.isAutoSaveEnabled,
-     ["languageId"]: organizationSettings.languageId
+        ["Source"]: "WebResource",
+        ["userName"]: userName,
+        ["userId"]: userSettings.userId,
+        ["organizationId"]: organizationId,
+        ["client"]: clientContext.getClient(),
+        ["uniqueName"]: organizationSettings.uniqueName,
+        ["clientState"]: clientContext.getClientState(),
+        ["formFactor"]: clientContext.getFormFactor(),
+        ["isOffline"]: clientContext.isOffline(),
+        ["clientUrl"]: globalContext.getClientUrl(),
+        ["version"]: globalContext.getVersion(),
+        ["baseCurrencyId"]: organizationSettings.baseCurrencyId,
+        ["defaultCountryCode"]: organizationSettings.defaultCountryCode,
+        ["isAutoSaveEnabled"]: organizationSettings.isAutoSaveEnabled,
+        ["languageId"]: organizationSettings.languageId
     };
     appInsights.trackEvent(formContext.getEventSource().getName() + " on " + Xrm.Page.data.entity.getEntityName() + " of " + Xrm.Page.context.getClientUrl() + " has been altered.", dimensions, null);
 }
@@ -433,7 +464,7 @@ function testTrackRequest() {
                             xmlHttpRequestResourceEntry.startTime,
                             xmlHttpRequestResourceEntry.responseEnd,
                             {
-                                "Source":"WebResource",
+                                "Source": "WebResource",
                                 "resource": JSON.stringify(xmlHttpRequestResourceEntry),
                                 "request": JSON.stringify(respObj)
                             });
@@ -458,7 +489,6 @@ function testTrackRequest() {
 }
 //Application Insights Demo Helper Methods==========================================================================================
 function onSaveTrackEvent(executionContext) {
-    alert('Hi i am saving now.');
     //https://developer.mozilla.org/en-US/docs/Web/API/Performance/measure
     performance.mark("Marking User Interaction Time-End: " + Xrm.Page.data.entity.getEntityName());
 
@@ -473,9 +503,9 @@ function onSaveTrackEvent(executionContext) {
 
     // Measure between the two different markers.
     var interactTime = window.performance.measure(
-      "mySetTimeout",
-      "Marking User Interaction Time-Start: " + Xrm.Page.data.entity.getEntityName(),
-      "Marking User Interaction Time-End: " + Xrm.Page.data.entity.getEntityName()
+        "mySetTimeout",
+        "Marking User Interaction Time-Start: " + Xrm.Page.data.entity.getEntityName(),
+        "Marking User Interaction Time-End: " + Xrm.Page.data.entity.getEntityName()
     );
     appInsights.trackMetric("SAVE METRIC: Save Mode: " + executionContext.getEventArgs().getSaveMode() + " on " + Xrm.Page.data.entity.getEntityName() + " of " + Xrm.Page.context.getClientUrl(), interactTime, null, null, null, null);
     appInsights.trackEvent("SAVE EVNT: Save Mode: " + executionContext.getEventArgs().getSaveMode() + " on " + Xrm.Page.data.entity.getEntityName() + " of " + Xrm.Page.context.getClientUrl() + " has been altered.");
@@ -556,11 +586,11 @@ function createEntity(ent, entName, upd) {
             }
             if (clientType === "Mobile") {
                 appInsights.trackMetric("createEntity Response Returned: " + Xrm.Page.context.getClientUrl() + "/api/data/v9.0/ayw_applicationinsightstestruns" + entName + " with status of " + this.status,
-                                        timeDiff,
-                                        0,
-                                        0,
-                                        0,
-                                        null);
+                    timeDiff,
+                    0,
+                    0,
+                    0,
+                    null);
             }
             else {
                 var xmlHttpRequestResourceEntry = window.performance.getEntriesByName(req.responseURL)[0];
@@ -582,6 +612,104 @@ function createEntity(ent, entName, upd) {
     //return newEntity;
 
 }
+
+function RetrieveEnvironmentVariable(variableName) {
+    //var environmentVariableDefinition = RetrieveEnvironmentVariableDefinition(variableName);
+
+    // var environmentVariableDefinition = RetrieveEnvironmentVariableDefinition(variableName)
+    // .then(function (environmentVariableDefinition){
+    return new Promise(function (resolve, reject) {
+        var req = new XMLHttpRequest();
+        req.open("GET", Xrm.Page.context.getClientUrl() + "/api/data/v8.2/environmentvariablevalues?$filter=_environmentvariabledefinitionid_value eq " + variableName, false);
+        req.setRequestHeader("OData-MaxVersion", "4.0");
+        req.setRequestHeader("OData-Version", "4.0");
+        req.setRequestHeader("Accept", "application/json");
+        req.setRequestHeader("Content-Type", "application/json; charset=utf-8");
+        req.onreadystatechange = function () {
+            if (this.readyState === 4) {
+                req.onreadystatechange = null;
+                if (this.status === 200) {
+                    var environmentVariable = JSON.parse(req.responseText).value[0].value;
+                    resolve(environmentVariable);
+                }
+                else {
+                    //
+                    reject();
+                }
+                //appInsights.trackEvent("RetrieveEntity Response Returned: " + req.responseURL + " with status of " + this.status);
+            }
+
+        };
+        req.send();
+
+    });
+
+
+
+
+}
+
+//function RetrieveEnvironmentVariable(variableName) {
+//    var req = new XMLHttpRequest();
+//    req.open("GET", Xrm.Page.context.getClientUrl() + "/api/data/v8.2/environmentvariablevalues?$filter=_environmentvariabledefinitionid_value eq " + environmentVariableDefinition, false);
+//    req.setRequestHeader("OData-MaxVersion", "4.0");
+//    req.setRequestHeader("OData-Version", "4.0");
+//    req.setRequestHeader("Accept", "application/json");
+//    req.setRequestHeader("Content-Type", "application/json; charset=utf-8");
+//    req.onreadystatechange = function () {
+//        if (this.readyState === 4) {
+//            req.onreadystatechange = null;
+//            if (this.status === 200) {
+//                var environmentVariable = JSON.parse(req.responseText).value[0];
+
+//            }
+//            else {
+//                //
+//            }
+//            appInsights.trackEvent("RetrieveEntity Response Returned: " + req.responseURL + " with status of " + this.status);
+//        }
+
+//    };
+//    req.send();
+//}
+
+function RetrieveEnvironmentVariableDefinition(definitionId) {
+
+    return new Promise(function (resolve, reject) {
+        var req = new XMLHttpRequest();
+        req.open("GET", Xrm.Page.context.getClientUrl() + "/api/data/v8.2/environmentvariabledefinitions?$filter=schemaname eq '" + definitionId + "'", false);
+
+        req.setRequestHeader("OData-MaxVersion", "4.0");
+        req.setRequestHeader("OData-Version", "4.0");
+        req.setRequestHeader("Accept", "application/json");
+        req.setRequestHeader("Content-Type", "application/json; charset=utf-8");
+        req.onreadystatechange = function () {
+            if (this.readyState === 4) {
+                //req.onreadystatechange = null;
+                if (this.status === 200) {
+                    var environmentVariable = JSON.parse(req.responseText).value[0];
+                    var environmentVariableDefinition = environmentVariable.environmentvariabledefinitionid;
+                    definitionId = environmentVariableDefinition;
+                    return resolve(environmentVariableDefinition);
+                    //callback.apply(environmentVariableDefinition);
+                }
+                else {
+                    //
+                    resolve();
+                }
+                //appInsights.trackEvent("RetrieveEntity Response Returned: " + req.responseURL + " with status of " + this.status);
+            }
+
+        };
+        req.send();
+        //resolve();
+
+
+    })
+
+
+}
+
 function RetrieveEntity(entName) {
     var req = new XMLHttpRequest();
     req.open("GET", Xrm.Page.context.getClientUrl() + "/api/data/v8.2/" + entName, false);
@@ -666,6 +794,8 @@ function pingForAppInsightsContext() {
 
 
     }, 1000);
+
+
 
 }
 

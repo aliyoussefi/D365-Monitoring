@@ -10,6 +10,7 @@
 */
 using Microsoft.Xrm.Sdk;
 using Microsoft.Xrm.Sdk.PluginTelemetry;
+using Microsoft.Xrm.Sdk.Query;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,14 +22,14 @@ using System.Threading;
 using System.Threading.Tasks;
 
 namespace Dynamics365.Monitoring.Plugins {
-    public class ILoggerExample : IPlugin {
+    public class MultipleRetrieveCalls : IPlugin {
         public class TestObject
         {
             public string TestProperty { get; set; }
         }
         private readonly string _unsecureString;
         private readonly string _secureString;
-        public ILoggerExample(string unsecureConfig, string secureConfig)
+        public MultipleRetrieveCalls(string unsecureConfig, string secureConfig)
         {
             _unsecureString = unsecureConfig;
             _secureString = secureConfig;
@@ -49,6 +50,11 @@ namespace Dynamics365.Monitoring.Plugins {
             // Obtain the execution context from the service provider.
             IPluginExecutionContext context = (IPluginExecutionContext)
                 serviceProvider.GetService(typeof(IPluginExecutionContext));
+
+            IOrganizationServiceFactory serviceFactory = (IOrganizationServiceFactory)serviceProvider.GetService(typeof(IOrganizationServiceFactory));
+            IOrganizationService service = serviceFactory.CreateOrganizationService(context.UserId);
+
+
             logger.BeginScope(new Dictionary<string, object> { 
                 ["CorrelationId"] = context.CorrelationId.ToString(),
                 ["InitiatingUserId"] = context.InitiatingUserId.ToString(),
@@ -63,48 +69,49 @@ namespace Dynamics365.Monitoring.Plugins {
             logger.LogMetric("Log Metric", 10000);
 
             logger.LogWarning("The person {PersonId} could not be found.", 1);
+            // Query using the paging cookie.
+            // Define the paging attributes.
+            // The number of records per page to retrieve.
+            int queryCount = 3;
+
+            // Initialize the page number.
+            int pageNumber = 1;
+
+            // Initialize the number of records.
+            int recordCount = 0;
+
+            // Define the condition expression for retrieving records.
 
 
-            logger.AddCustomProperty("CorrelationId", context.CorrelationId.ToString());
-            logger.AddCustomProperty("PrimaryEntityId", context.PrimaryEntityId.ToString());
-            logger.Log(LogLevel.Information, "LogLevel Information Example");
+
+
             
             logger.LogInformation("Within Scope");
             try
             {
-                using (HttpClient client = new HttpClient())
-                {
-                    client.Timeout = TimeSpan.FromMilliseconds(15000); //15 seconds
-                    client.DefaultRequestHeaders.ConnectionClose = true; //Set KeepAlive to false
-                    client.DefaultRequestHeaders.Add(context.OrganizationName + "_requestId", context.CorrelationId.ToString());
-                    HttpResponseMessage response = client
-                        .GetAsync(_unsecureString)
-                        .GetAwaiter()
-                        .GetResult(); //Make sure it is synchronous
+                // Create the query expression and add condition.
+                var pagequery = new QueryExpression();
+                pagequery.EntityName = "account";
+                pagequery.ColumnSet = new ColumnSet(true);
 
-                    response.EnsureSuccessStatusCode();
+                // Assign the pageinfo properties to the query expression.
+                pagequery.PageInfo = new PagingInfo();
+                pagequery.PageInfo.Count = queryCount;
+                pagequery.PageInfo.PageNumber = pageNumber;
+                service.RetrieveMultiple(pagequery);
 
-                    string responseText = response.Content
-                        .ReadAsStringAsync()
-                        .GetAwaiter()
-                        .GetResult(); //Make sure it is synchronous
+                pagequery.EntityName = "contact";
+                service.RetrieveMultiple(pagequery);
 
-                    foreach (KeyValuePair<string, IEnumerable<string>> header in response.Content.Headers)
-                    {
-                        logger.LogInformation(header.Key + " " + header.Value);
-                    }
+                pagequery.EntityName = "account";
+                service.RetrieveMultiple(pagequery);
 
-                    string shortResponseText = responseText.Substring(0, 20);
+                pagequery.EntityName = "contact";
+                service.RetrieveMultiple(pagequery);
 
-                    logger.LogInformation(shortResponseText);
-                    tracingService.Trace(shortResponseText);
-
-                    string outboundEndMsg = "Outbound call ended successfully";
-
-                    logger.LogInformation(outboundEndMsg);
-                    tracingService.Trace(outboundEndMsg);
-
-                }
+                logger.AddCustomProperty("CorrelationId", context.CorrelationId.ToString());
+                logger.AddCustomProperty("PrimaryEntityId", context.PrimaryEntityId.ToString());
+                logger.Log(LogLevel.Information, "LogLevel Information Example");
             }
             catch (Exception e)
             {
