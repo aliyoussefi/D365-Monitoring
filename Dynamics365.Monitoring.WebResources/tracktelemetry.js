@@ -283,7 +283,7 @@ function successCallBackCustomEventPush(result) {
 
 
     };
-    appInsights.trackEvent("Gilles Demo", dimensions, null);
+    appInsights.trackEvent("Get App", dimensions, null);
 }
 
 function successCallBackAppPropertiesCustomEventPush(result) {
@@ -297,7 +297,7 @@ function successCallBackAppPropertiesCustomEventPush(result) {
 
 
     };
-    appInsights.trackEvent("Gilles Demo", dimensions, null);
+    appInsights.trackEvent("Get App Properties", dimensions, null);
 }
 
 function errorCallBackCustomEventPush(result) {
@@ -305,6 +305,17 @@ function errorCallBackCustomEventPush(result) {
 }
 //Form and Execution Context Helper Methods========================================================================================
 
+function captureButtonClick(primaryControl) {
+    //https://learn.microsoft.com/en-us/power-apps/developer/model-driven-apps/pass-data-page-parameter-ribbon-actions
+    var formContext = primaryControl;
+    appInsights.trackEvent("Clicked Button.");
+}
+
+function captureTabChange(primaryControl) {
+    //https://learn.microsoft.com/en-us/power-apps/developer/model-driven-apps/pass-data-page-parameter-ribbon-actions
+    var formContext = primaryControl;
+    appInsights.trackEvent("Changed Tab.");
+}
 
 
 function testTrackAvailabilityResults() {

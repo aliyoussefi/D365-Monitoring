@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.28729.10
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33829.357
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dynamics365.Monitoring.WebResources", "Dynamics365.Monitoring.WebResources\Dynamics365.Monitoring.WebResources.csproj", "{5719205E-BAD4-46B1-9890-CC986E4B10B3}"
 EndProject
@@ -25,6 +25,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NewFolder1", "NewFolder1", 
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dynamics365.Monitoring.Scenarios", "Dynamics365.Monitoring.Scenarios\Dynamics365.Monitoring.Scenarios.csproj", "{6C4D556E-1E23-4267-8453-BBEEEDB80786}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dataverse.Monitoring.Sdk", "Dataverse.Monitoring.Sdk\Dataverse.Monitoring.Sdk.csproj", "{2F83FE02-C0DF-411C-B70C-9AFD8E6B0F71}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -52,6 +54,10 @@ Global
 		{6C4D556E-1E23-4267-8453-BBEEEDB80786}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6C4D556E-1E23-4267-8453-BBEEEDB80786}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6C4D556E-1E23-4267-8453-BBEEEDB80786}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F83FE02-C0DF-411C-B70C-9AFD8E6B0F71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F83FE02-C0DF-411C-B70C-9AFD8E6B0F71}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F83FE02-C0DF-411C-B70C-9AFD8E6B0F71}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F83FE02-C0DF-411C-B70C-9AFD8E6B0F71}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
