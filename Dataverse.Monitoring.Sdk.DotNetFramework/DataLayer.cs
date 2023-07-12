@@ -20,7 +20,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Dataverse.Monitoring.Sdk
+namespace Dataverse.Monitoring.Sdk.DotNetFramework
 {
     public class DataLayer
     {

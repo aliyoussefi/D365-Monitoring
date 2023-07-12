@@ -28,6 +28,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dynamics365.Monitoring.Scen
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dataverse.Monitoring.Sdk", "Dataverse.Monitoring.Sdk\Dataverse.Monitoring.Sdk.csproj", "{2F83FE02-C0DF-411C-B70C-9AFD8E6B0F71}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dataverse.Monitoring.Sdk.DotNetFramework", "Dataverse.Monitoring.Sdk.DotNetFramework\Dataverse.Monitoring.Sdk.DotNetFramework.csproj", "{9CCF518F-344B-41BD-A608-FDBE4D2DBA42}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -58,6 +60,10 @@ Global
 		{2F83FE02-C0DF-411C-B70C-9AFD8E6B0F71}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2F83FE02-C0DF-411C-B70C-9AFD8E6B0F71}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2F83FE02-C0DF-411C-B70C-9AFD8E6B0F71}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9CCF518F-344B-41BD-A608-FDBE4D2DBA42}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9CCF518F-344B-41BD-A608-FDBE4D2DBA42}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9CCF518F-344B-41BD-A608-FDBE4D2DBA42}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9CCF518F-344B-41BD-A608-FDBE4D2DBA42}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
