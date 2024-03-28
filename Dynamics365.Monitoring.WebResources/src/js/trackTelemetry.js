@@ -1,6 +1,5 @@
 //Application Insights Demo Helper Methods==========================================================================================
 function test(context){
-alert('Hello World');
 }
 function captureTelemetry(formContext) {
     
@@ -793,3 +792,4 @@ function pingForAppInsightsContext() {
 }
 
 //End Nav and Resource Timings  Helpers==================================================================================================================
+module.exports = {test};

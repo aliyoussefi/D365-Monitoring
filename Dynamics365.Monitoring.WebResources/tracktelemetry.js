@@ -42,9 +42,13 @@ function captureTelemetry(formContext) {
             //https://github.com/microsoft/ApplicationInsights-JS/issues/1302
             appInsights.tags["ai.session.id"] = parent.window.CURRENT_SESSION_ID;
             appInsights.tags["ai.user.id"] = userSettings.userId;
-            appInsights.tags["ai.application.version"] = globalContext.getVersion()
+            appInsights.tags["ai.application.version"] = globalContext.getVersion();
+            appInsights.setAuthenticatedUserContext(userSettings.userId);
             window.appInsights = appInsights;
+            //Write Page View
+            appInsights.trackPageView();
         });
+        
 }
 
 async function asyncRetrieveInstrumentationKeyEnvironmentVariable(variableName) {

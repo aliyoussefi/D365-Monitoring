@@ -24,11 +24,13 @@ namespace Dataverse.Monitoring.Sdk
 {
     public class DataLayer
     {
+        private ILogger _logger;
         private ServiceClient _serviceClient;
         Guid? _sessionTrackingId;
         ParameterCollection _parameterCollection;
-        public DataLayer(ServiceClient client, Guid? sessionTrackingId)
+        public DataLayer(ServiceClient client, Guid? sessionTrackingId, ILogger logger)
         {
+            _logger = logger;
             _serviceClient = client;
             _sessionTrackingId = sessionTrackingId;
             _parameterCollection = new ParameterCollection();
@@ -48,8 +50,7 @@ namespace Dataverse.Monitoring.Sdk
                 Parameters = _parameterCollection
             });
             Console.WriteLine("\nUser ID is {0}.", resp.UserId);
-            Trace.WriteLine("Trace");
-            
+            _logger.LogInformation(resp.ResponseName + " completed.");       
             // Pause program execution before resource cleanup.
             Console.WriteLine("Press any key to continue.");
             //Console.ReadKey();

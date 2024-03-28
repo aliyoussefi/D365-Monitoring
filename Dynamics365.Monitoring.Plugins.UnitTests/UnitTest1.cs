@@ -6,6 +6,8 @@ namespace Dynamics365.Monitoring.Plugins.UnitTests {
     public class UnitTest1 {
         [TestMethod]
         public void TestMethod1() {
+
+
         }
     }
 }
