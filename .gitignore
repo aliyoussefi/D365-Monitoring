@@ -262,3 +262,13 @@ __pycache__/
 /D365-Monitoring/db-javascript
 /D365-Monitoring/src.zip
 /D365-Monitoring/codeql-database.yml
+/Dynamics365.Monitoring.Plugins.UnitTests/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+/Dynamics365.Monitoring.Plugins/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+/Dynamics365.Monitoring.Plugins/obj/Debug/Dynamics365.Monitoring.Plugins.csproj.CoreCompileInputs.cache
+/Dynamics365.Monitoring.Plugins/obj/Debug/Dynamics365.Monitoring.Plugins.dll
+/Dynamics365.Monitoring.Plugins/obj/Debug/Dynamics365.Monitoring.Plugins.csproj.FileListAbsolute.txt
+/Dynamics365.Monitoring.Plugins/obj/Debug/Dynamics365.Monitoring.Plugins.pdb
+/Dynamics365.Monitoring.WebResources/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+/Dynamics365.Monitoring.Plugins/obj/Debug/Dynamics365.Monitoring.Plugins.csproj.CopyComplete
+/Dynamics365.Monitoring.Plugins/bin/Debug/Dynamics365.Monitoring.Plugins.dll
+/Dynamics365.Monitoring.Plugins/bin/Debug/Dynamics365.Monitoring.Plugins.pdb
