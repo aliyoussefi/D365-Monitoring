@@ -8,6 +8,7 @@
 # (ii) to include a valid copyright notice on Your software product in which the Sample Code is embedded; 
 # and (iii) to indemnify, hold harmless, and defend Us and Our suppliers from and against any claims or lawsuits, including attorneys’ fees, that arise or result from the use or distribution of the Sample Code 
 */
+using Dynamics365.Monitoring.Plugins.Helpers;
 using Microsoft.Xrm.Sdk;
 using Microsoft.Xrm.Sdk.PluginTelemetry;
 using System;
@@ -15,6 +16,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Runtime.Serialization;
 using System.Security;
 using System.Text;
 using System.Threading;
@@ -22,6 +24,7 @@ using System.Threading.Tasks;
 
 namespace Dynamics365.Monitoring.Plugins {
     public class ILoggerExample : IPlugin {
+        [Serializable]
         public class TestObject
         {
             public string TestProperty { get; set; }
@@ -42,9 +45,10 @@ namespace Dynamics365.Monitoring.Plugins {
                 (ITracingService)serviceProvider.GetService(typeof(ITracingService));
             tracingService.Trace("Starting ILoggerExample at " + DateTime.Now.ToString());
             ILogger logger = (ILogger)serviceProvider.GetService(typeof(ILogger));
+            if (logger == null) logger = new Logger(tracingService);
             TestObject testObject = new TestObject();
             testObject.TestProperty = "Demo on " + DateTime.Now.ToString();
-            logger.LogInformation("Log Information outside of scope", testObject);
+            logger.LogInformation("Log Information outside of scope");
 
             // Obtain the execution context from the service provider.
             IPluginExecutionContext context = (IPluginExecutionContext)
@@ -54,13 +58,14 @@ namespace Dynamics365.Monitoring.Plugins {
                 ["InitiatingUserId"] = context.InitiatingUserId.ToString(),
                 ["AdditionalProperties"] = testObject
             });
-            logger.LogInformation("Log Information", testObject);
-            logger.LogWarning("Log Warning");
-            logger.LogTrace("Log Trace");
-            logger.LogCritical("Log Critical");
-            logger.LogDebug("Log Debug");
-            logger.LogError("Log Error");
-            logger.LogMetric("Log Metric", 10000);
+            //logger.LogInformation("Log Information", testObject);
+            logger.LogInformation("Log Information");
+            logger.LogWarning("Example of Warning");
+            logger.LogTrace("Example of Trace");
+            logger.LogCritical("Example of Critical");
+            logger.LogDebug("Example of Debug");
+            logger.LogError("Example of Error");
+            logger.LogMetric("Example of Metric", 10000);
 
             logger.LogWarning("The person {PersonId} could not be found.", 1);
 

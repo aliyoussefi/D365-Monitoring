@@ -201,6 +201,7 @@
     <Compile Include="ApplicationInsightsTrackException.cs" />
     <Compile Include="ApplicationInsightsTrackMetric.cs" />
     <Compile Include="Contracts\ApplicationInsightsContracts.cs" />
+    <Compile Include="Helpers\ILogger.cs" />
     <Compile Include="Scenarios\UpdateRecursive.cs" />
     <Compile Include="Scenarios\MultipleRetrieveCalls.cs" />
     <Compile Include="Models\PluginContextToApplicationInsightContracts.cs" />
